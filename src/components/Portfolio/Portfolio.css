@@ -1,0 +1,100 @@
+.portfolio {
+  padding: 100px 50px 0;
+}
+
+@media (max-width: 768px) {
+  .portfolio {
+    padding: 60px 25px 0
+  }
+}
+
+@media (max-width:425px) {
+  .portfolio {
+    padding: 30px 20px 0
+  }
+}
+
+.portfolio__carousel {
+  padding: 0 100px;
+}
+
+@media (max-width: 1438px) {
+  .portfolio__carousel {
+    padding: 0;
+  }
+}
+
+.portfolio__list {
+  display: flex;
+}
+
+.portfolio__item {
+  width: 100%;
+}
+
+.portfolio__card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border: none;
+}
+
+@media (max-width: 1439px) {
+  .portfolio__card {
+    flex-direction: column;
+  }
+}
+
+.portfolio__paragraph {
+  max-width: 300px;
+  margin: 0 10px;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+@media (max-width: 1439px) {
+  .portfolio__paragraph {
+    max-width: 600px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 425px) {
+  .portfolio__paragraph {
+    font-size: 16px;
+  }
+}
+
+.portfolio__image {
+  max-width: 500px;
+  max-height: 415px;
+  margin: 0 auto 10px;
+}
+
+@media (max-width: 1439px) {
+  .portfolio__image {
+    order: -1;
+  }
+}
+
+/* .portfolio__carousel .carousel-button {
+  top: 50%;
+} */
+
+@media (max-width: 425px) {
+  .portfolio__carousel .carousel-button {
+    top: 105%;
+  }
+}
+
+@media (max-width: 425px) {
+  .portfolio__carousel-button-left {
+    left: 20%;
+  }
+
+  .portfolio__carousel-button-right {
+    right: 20%;
+  }
+}

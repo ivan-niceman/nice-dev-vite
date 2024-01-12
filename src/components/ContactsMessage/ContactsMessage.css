@@ -1,0 +1,49 @@
+.contacts-block {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  backdrop-filter: blur(20px);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  transition: visibility 0.3s, opacity 0.3s linear;
+}
+
+.active-form {
+  opacity: 1;
+  visibility: visible;
+}
+
+.contacts-message {
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  background: linear-gradient(45deg, #760592, #fbb42c);
+  box-shadow: 0 0 20px #760592;
+  height: 50vh;
+  width: 50vw;
+  min-width: 300px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.contacts-message img {
+  width: calc((100vw - 320px) / (1280 - 320) * (90 - 60) + 60px);
+}
+
+.contacts-info {
+  font-size: 32px;
+  font-size: calc((100vw - 320px) / (1280 - 320) * (40 - 16) + 16px) !important;
+  color: #fff;
+}

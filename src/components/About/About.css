@@ -1,0 +1,182 @@
+.about {
+  padding: 100px 50px 0;
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 60px 20px 0;
+  }
+}
+
+@media (max-width: 425px) {
+  .about {
+    padding: 30px 20px 0
+  }
+}
+
+.about__us {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  column-gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .about__us {
+    grid-template: 1fr / 1fr;
+  }
+}
+
+.about__left-paragraph {
+  font-size: 18px;
+  line-height: 21px;
+}
+
+@media (max-width:1024px) {
+  .about__left-paragraph {
+    font-size: 14px;
+    line-height: 18px
+  }
+}
+
+.about__right {
+  align-self: flex-end;
+  justify-self: flex-end;
+  max-width: 760px;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .about__right {
+    order: -1;
+    justify-self: center;
+    margin: 50px 0;
+  }
+}
+
+@media (max-width: 425px) {
+  .about__right {
+    margin: 15px 0;
+  }
+}
+
+.about__carousel {
+  padding: 0 100px;
+}
+
+@media (max-width: 768px) {
+  .about__carousel {
+    padding: 0 15px;
+  }
+}
+
+.about__right-carousel {
+  max-width: 577px;
+  margin: 0 auto;
+  border: 2px solid #000;
+  border-radius: 20px;
+  padding: 20px;
+  overflow: visible;
+  background-color: #fff;
+}
+
+@media (max-width: 425px) {
+  .about__right-carousel {
+    padding: 10px;
+  }
+}
+
+.about__right-carousel::before {
+  content: "";
+  border: 2px solid transparent;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  top: -25px;
+  z-index: -1;
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(white),
+      to(white)
+    ),
+    radial-gradient(circle at top left, #fbb42c, #760592);
+  background-image: -o-linear-gradient(white, white),
+    -o-radial-gradient(top left, circle, #fbb42c, #760592);
+  background-image: linear-gradient(white, white),
+    radial-gradient(circle at top left, #fbb42c, #760592);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+@media (max-width: 425px) {
+  .about__right-carousel::before {
+    top: -15px;
+  }
+}
+
+.about__card {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  border: none;
+}
+
+@media (max-width: 1244px) {
+  .about__card {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.card__size {
+  max-width: 255px;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+@media (max-width: 425px) {
+  .card__size {
+    height: 230px;
+    object-fit: contain;
+  }
+}
+
+.card-body {
+  font-size: 18px;
+  line-height: 21px;
+  padding: 0;
+}
+
+.about__card-profession {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+@media (max-width: 425px) {
+  .about__card-profession {
+    font-size: 18px;
+    text-align: center
+  }
+}
+
+@media (max-width: 425px) {
+  .about__card-name {
+    font-size: 20px
+  }
+}
+
+@media (max-width: 425px) {
+  .about__card-text {
+    font-size: 14px;
+    margin: 0
+  }
+}
+
+.about__carousel .carousel-button {
+  top: 50%;
+}

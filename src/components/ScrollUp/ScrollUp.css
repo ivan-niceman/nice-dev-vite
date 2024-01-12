@@ -1,0 +1,50 @@
+.scroll-up {
+  display: none;
+  background: #fbb42c;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 30px;
+  right: 50px;
+  text-align: center;
+  transition: 0.5s;
+  padding: 0;
+  z-index: 100;
+}
+
+@media (max-width:425px) {
+  .scroll-up {
+    right: 30px;
+    bottom: 30px
+  }
+}
+
+.scroll-up_visible {
+  display: block;
+}
+
+.scroll-up_visible:hover {
+  background: rgba(251, 178, 44, 0.8);
+  -webkit-box-shadow: 0 0 10px 0 #760592;
+  box-shadow: 0 0 10px 0 #760592;
+}
+
+.scroll-up_visible span {
+  width: 25px;
+  height: 4px;
+  background: #760592;
+  position: absolute;
+  top: 42%;
+}
+
+.scroll-up_visible span:first-child {
+  transform: rotate(-45deg);
+  left: 5px;
+}
+
+.scroll-up_visible span:last-child {
+  transform: rotate(45deg);
+  right: 5px;
+}
