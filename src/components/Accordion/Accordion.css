@@ -1,0 +1,72 @@
+.accordion-item::before {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(45deg, #760592, #fbb42c, #fbb42c);
+}
+
+.accordion-item:last-child::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(45deg, #760592, #fbb42c, #fbb42c);
+}
+
+.accordion-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  font-size: 21px;
+  font-size: calc(16px + (24 - 16) * (100vw - 425px) / (1200 - 425));
+  line-height: 21px;
+  line-height: calc(21px + (28 - 21) * (100vw - 320px) / (1200 - 320));
+  text-transform: uppercase;
+  text-align: left;
+  width: 100%;
+  padding: 20px 20px 20px 0;
+  background-color: #fff;
+  border: none;
+}
+
+@media (max-width: 425px) {
+  .accordion-button {
+    padding: 15px 0;
+  }
+}
+
+.accordion-background {
+  background: #f5f5f5;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: inherit;
+  color: inherit;
+}
+
+.accordion-button::after {
+  content: "";
+  display: inline-block;
+  background: url(../../images/icons/plus.svg) center no-repeat;
+  min-width: 40px;
+  height: 40px;
+  margin: 0 0 0 10px;
+  transition: 0.3s;
+}
+
+@media (max-width: 425px) {
+  .accordion-button::after {
+    min-width: 30px;
+    height: 30px;
+  }
+}
+
+.accordion-button:not(.collapsed)::after {
+  transform: rotate(45deg);
+}

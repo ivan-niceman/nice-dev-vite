@@ -70,7 +70,9 @@ export default function Navigation() {
               className="contacts-link"
               target="_blank"
               rel="noreferrer"
-            > </a>
+            >
+              {" "}
+            </a>
           </li>
           <li className="contacts-item">
             <a
@@ -78,7 +80,9 @@ export default function Navigation() {
               className="contacts-link"
               target="_blank"
               rel="noreferrer"
-            > </a>
+            >
+              {" "}
+            </a>
           </li>
           <li className="contacts-item">
             <a
@@ -86,7 +90,9 @@ export default function Navigation() {
               className="contacts-link"
               target="_blank"
               rel="noreferrer"
-            > </a>
+            >
+              {" "}
+            </a>
           </li>
         </ul>
       </nav>
@@ -163,7 +169,9 @@ export default function Navigation() {
                 className="contacts-link"
                 target="_blank"
                 rel="noreferrer"
-              > </a>
+              >
+                {" "}
+              </a>
             </li>
             <li className="contacts-item">
               <a
@@ -171,7 +179,9 @@ export default function Navigation() {
                 className="contacts-link"
                 target="_blank"
                 rel="noreferrer"
-              > </a>
+              >
+                {" "}
+              </a>
             </li>
             <li className="contacts-item">
               <a
@@ -179,7 +189,9 @@ export default function Navigation() {
                 className="contacts-link"
                 target="_blank"
                 rel="noreferrer"
-              > </a>
+              >
+                {" "}
+              </a>
             </li>
           </ul>
         </div>

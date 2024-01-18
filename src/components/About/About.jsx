@@ -1,7 +1,5 @@
-import './About.css';
-import partner1 from "../../images/partners/partner1.webp";
-import partner2 from "../../images/partners/partner2.webp";
-import partner3 from "../../images/partners/partner3.webp";
+import "./About.css";
+import { aboutUsContent } from "../../utils/aboutUsContent";
 
 export default function About() {
   return (
@@ -39,58 +37,28 @@ export default function About() {
             data-touch="true"
           >
             <ul className="carousel-inner about__right-carousel">
-              <li className="carousel-item active" data-interval="10000">
-                <div className="card about__card">
-                  <img
-                    src={partner1}
-                    className="card__size"
-                    alt="дизайнер Наталья"
-                  />
-                  <div className="card-body">
-                    <h2 className="about__card-profession">Web-дизайнер</h2>
-                    <h3 className="about__card-name">Наталья</h3>
-                    <p className="about__card-text">
-                      Имею большой опыт работы не только в создании визуала, но
-                      также в маркетинге и туризме.
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li className="carousel-item" data-interval="10000">
-                <div className="card about__card">
-                  <img
-                    src={partner2}
-                    className="card-img-top card__size"
-                    alt="проект менеджер Наталья"
-                  />
-                  <div className="card-body">
-                    <h2 className="about__card-profession">Project-manager</h2>
-                    <h3 className="about__card-name">Наталья</h3>
-                    <p className="about__card-text">
-                      Живу туризмом уже больше 12 лет. Помогу вам сделать лучший
-                      выбор из нашего спектра услуг и дам много полезных советов
-                      :)
-                    </p>
-                  </div>
-                </div>
-              </li>
-              <li className="carousel-item" data-interval="10000">
-                <div className="card about__card">
-                  <img
-                    src={partner3}
-                    className="card-img-top card__size"
-                    alt="разработчик Иван"
-                  />
-                  <div className="card-body">
-                    <h2 className="about__card-profession">Front-end developer</h2>
-                    <h3 className="about__card-name">Иван</h3>
-                    <p className="about__card-text">
-                      Качественно и внимательно напишу ваш сайт с учётом всех
-                      новинок мира web-разработки.
-                    </p>
-                  </div>
-                </div>
-              </li>
+              {aboutUsContent.map(
+                ({ image, profession, name, description }, index) => (
+                  <li
+                    className={`carousel-item ${index === 0 ? "active" : ""}`}
+                    data-interval="10000"
+                    key={index}
+                  >
+                    <div className="card about__card">
+                      <img
+                        src={image}
+                        className="card__size"
+                        alt="дизайнер Наталья"
+                      />
+                      <div className="card-body">
+                        <h2 className="about__card-profession">{profession}</h2>
+                        <h3 className="about__card-name">{name}</h3>
+                        <p className="about__card-text">{description}</p>
+                      </div>
+                    </div>
+                  </li>
+                ),
+              )}
             </ul>
             <a
               className="carousel-control-prev carousel-button"
@@ -98,9 +66,7 @@ export default function About() {
               role="button"
               data-slide="prev"
             >
-              <span className="material-symbols-outlined">
-                arrow_left_alt
-              </span>
+              <span className="material-symbols-outlined">arrow_left_alt</span>
             </a>
             <a
               className="carousel-control-next carousel-button"
@@ -108,9 +74,7 @@ export default function About() {
               role="button"
               data-slide="next"
             >
-              <span className="material-symbols-outlined">
-                arrow_right_alt
-              </span>
+              <span className="material-symbols-outlined">arrow_right_alt</span>
             </a>
           </div>
         </section>

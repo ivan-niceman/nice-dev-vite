@@ -47,6 +47,16 @@
   animation: scale 2s ease-in-out infinite alternate;
 }
 
+@keyframes scale {
+  0% {
+    transform: translateY(-30px);
+  }
+
+  100% {
+    transform: translateY(30px);
+  }
+}
+
 .question-button {
   width: 350px;
   width: calc(250px + (350 - 250) * (100vw - 320px) / (1440 - 320));
