@@ -29,15 +29,17 @@
   font-size: 24px;
   line-height: 28px;
   padding: 15px 30px;
-  background-color: #fbb42c;
+  background-color: var(--yellow-color);
   border-radius: 15px;
   text-align: center;
+  box-shadow: 5px 5px 10px var(--box-shadow);
 }
 
 .about-specialty-paragraph {
   font-size: 18px;
   line-height: 21px;
   padding: 20px 0 0;
+  color: var(--text-color);
 }
 
 @media (max-width: 425px) {

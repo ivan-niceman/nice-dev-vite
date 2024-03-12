@@ -1,5 +1,4 @@
 
-import './ScrollUp.css';
 import { useState, useEffect } from 'react';
 
 export default function ScrollUp() {

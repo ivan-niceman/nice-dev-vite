@@ -1,6 +1,6 @@
 .scroll-up {
   display: none;
-  background: #fbb42c;
+  background: var(--yellow-color);
   border: none;
   border-radius: 50%;
   width: 50px;
@@ -27,14 +27,14 @@
 
 .scroll-up_visible:hover {
   background: rgba(251, 178, 44, 0.8);
-  -webkit-box-shadow: 0 0 10px 0 #760592;
-  box-shadow: 0 0 10px 0 #760592;
+  -webkit-box-shadow: 0 0 10px 0 var(--purple-color);
+  box-shadow: 0 0 10px 0 var(--purple-color);
 }
 
 .scroll-up_visible span {
   width: 25px;
   height: 4px;
-  background: #760592;
+  background: var(--purple-color);
   position: absolute;
   top: 42%;
 }

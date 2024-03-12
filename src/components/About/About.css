@@ -29,6 +29,7 @@
 .about__left-paragraph {
   font-size: 18px;
   line-height: 21px;
+  color: var(--text-color);
 }
 
 @media (max-width:1024px) {
@@ -72,16 +73,22 @@
 .about__right-carousel {
   max-width: 577px;
   margin: 0 auto;
-  border: 2px solid #000;
+  border: 2px solid var(--text-color);
   border-radius: 20px;
   padding: 20px;
   overflow: visible;
-  background-color: #fff;
+  background-color: var(--white-color);
 }
 
+@media (max-width: 1200px) {
+  .about__right-carousel {
+    height: 540px;
+  }
+}
 @media (max-width: 425px) {
   .about__right-carousel {
     padding: 10px;
+    height: 425px;
   }
 }
 
@@ -94,18 +101,16 @@
   border-radius: 20px;
   top: -25px;
   z-index: -1;
-  background-image: -webkit-gradient(
-      linear,
+  background-image: -webkit-gradient(linear,
       left top,
       left bottom,
-      from(white),
-      to(white)
-    ),
-    radial-gradient(circle at top left, #fbb42c, #760592);
-  background-image: -o-linear-gradient(white, white),
-    -o-radial-gradient(top left, circle, #fbb42c, #760592);
-  background-image: linear-gradient(white, white),
-    radial-gradient(circle at top left, #fbb42c, #760592);
+      from(var(--white-color)),
+      to(var(--white-color))),
+    radial-gradient(circle at top left, var(--yellow-color), var(--purple-color));
+  background-image: -o-linear-gradient(var(--white-color), var(--white-color)),
+    -o-radial-gradient(top left, circle, var(--yellow-color), var(--purple-color));
+  background-image: linear-gradient(var(--white-color), var(--white-color)),
+    radial-gradient(circle at top left, var(--yellow-color), var(--purple-color));
   background-origin: border-box;
   background-clip: padding-box, border-box;
 }
@@ -121,6 +126,7 @@
   flex-direction: row;
   gap: 20px;
   border: none;
+  background-color: var(--body_background-color);
 }
 
 @media (max-width: 1244px) {
@@ -149,6 +155,7 @@
   font-size: 18px;
   line-height: 21px;
   padding: 0;
+  color: var(--text-color);
 }
 
 .about__card-profession {

@@ -39,8 +39,8 @@
   max-width: 426px;
   min-height: 250px;
   border-radius: 20px;
-  background: -o-linear-gradient(313.95deg, #fbb42c 25.89%, #de73f9 93.09%);
-  background: linear-gradient(136.05deg, #fbb42c 25.89%, #de73f9 93.09%);
+  background: -o-linear-gradient(313.95deg, var(--yellow-color) 25.89%, #de73f9 93.09%);
+  background: linear-gradient(136.05deg, var(--yellow-color) 25.89%, #de73f9 93.09%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +57,7 @@
 
 .services-item:after {
   content: "";
-  border: 3px solid #000;
+  border: 3px solid var(--text-color);
   position: absolute;
   top: -20px;
   right: -20px;

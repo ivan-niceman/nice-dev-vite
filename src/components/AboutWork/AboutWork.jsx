@@ -1,5 +1,21 @@
-import "./AboutWork.css";
-import { aboutOurWorkContent } from "../../utils/aboutOurWorkContent";
+const aboutOurWorkContent = [
+  {
+    title: `исследование`,
+    description: `Перед тем как приступить к созданию вашего сайта или фирменного стиля, мы проводим глубокий анализ рынка и ваших конкурентов, чтобы сделать ваш бизнес еще более успешным`,
+  },
+  {
+    title: `проектирование`,
+    description: `Мы проводим несколько этапов проектирования, учитывая поведение пользователей, их потребности и современные требования`,
+  },
+  {
+    title: `дизайн`,
+    description: `В дизайне мы учитываем современные концепции, функциональность и вашу эстетику. Все этапы согласовываем с клиентом`,
+  },
+  {
+    title: `разработка`,
+    description: `После согласования проекта и дизайна, мы переходим к разработке вашего сайта, чтобы добиться идеальной функциональности на пути пользователя`,
+  },
+];
 
 export default function AboutWork() {
   return (
@@ -45,7 +61,7 @@ export default function AboutWork() {
           role="button"
           data-slide="prev"
         >
-          r<span className="material-symbols-outlined">arrow_left_alt</span>
+          <span className="material-symbols-outlined">arrow_left_alt</span>
         </a>
         <a
           className="carousel-control-next carousel-button carousel-button-right"

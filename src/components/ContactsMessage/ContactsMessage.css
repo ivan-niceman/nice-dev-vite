@@ -10,7 +10,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 20;
+  z-index: 200;
   transition: visibility 0.3s, opacity 0.3s linear;
 }
 
@@ -23,8 +23,8 @@
   display: flex;
   align-items: center;
   border-radius: 15px;
-  background: linear-gradient(45deg, #760592, #fbb42c);
-  box-shadow: 0 0 20px #760592;
+  background: linear-gradient(45deg, var(--purple-color), var(--yellow-color));
+  box-shadow: 0 0 20px var(--purple-color);
   height: 50vh;
   width: 50vw;
   min-width: 300px;
@@ -45,5 +45,5 @@
 .contacts-info {
   font-size: 32px;
   font-size: calc((100vw - 320px) / (1280 - 320) * (40 - 16) + 16px) !important;
-  color: #fff;
+  color: var(--white-text-color);
 }

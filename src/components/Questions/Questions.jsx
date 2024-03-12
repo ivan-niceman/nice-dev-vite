@@ -1,4 +1,3 @@
-import "./Questions.css";
 import { useState } from "react";
 import Popup from "../Popup/Popup";
 import Accordion from "../Accordion/Accordion";

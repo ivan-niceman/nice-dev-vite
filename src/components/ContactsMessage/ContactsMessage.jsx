@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import PropTypes from "prop-types";
-import "./ContactsMessage.css";
 import ok from "../../images/logo/good.svg";
 
 ContactsMessage.propTypes = {

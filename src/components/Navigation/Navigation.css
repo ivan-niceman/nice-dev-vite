@@ -1,3 +1,7 @@
+.header__nav {
+  column-gap: 20px;
+}
+
 @media (max-width: 991px) {
   .header__nav {
     display: none;
@@ -7,6 +11,22 @@
 .header__logo img {
   width: 130px;
   height: 50px;
+  object-fit: contain;
+}
+
+.header__logo p,
+.footer__logo p {
+  margin: 0;
+  text-align: center;
+  color: var(--text-color);
+  font-size: 14px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  transform: translateY(-8px);
+}
+
+.footer__logo p {
+  color: var(--white-text-color);
 }
 
 .header__menu {
@@ -22,7 +42,7 @@
   content: "";
   position: absolute;
   bottom: 0;
-  border-bottom: 1px solid #760592;
+  border-bottom: 1px solid var(--purple-color);
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -50,11 +70,15 @@
 }
 
 .header__menu-text:hover {
-  color: #760592;
+  color: var(--purple-color);
+}
+
+.nav-link {
+  color: var(--text-color);
 }
 
 .navbar-nav .nav-link.active:hover {
-  color: #760592;
+  color: var(--purple-color);
 }
 
 .contacts-list {
@@ -68,25 +92,42 @@
 }
 
 .contacts-link {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 25px;
   height: 25px;
 }
 
-.contacts-item:first-child .contacts-link {
-  background: url(../../images/icons/telegram.svg) center no-repeat;
-  background-size: contain;
-}
-
-.contacts-item:nth-child(2) .contacts-link {
-  background: url(../../images/icons/whatsapp.svg) center no-repeat;
-  background-size: contain;
-}
-
-.contacts-item:last-child .contacts-link {
-  background: url(../../images/icons/email.svg) center no-repeat;
-  background-size: contain;
+.contacts-link.mail-icon {
   width: 30px;
+}
+
+.contacts-link svg path,
+.contacts-link svg polyline {
+  stroke: var(--text-color);
+}
+
+.contacts-link .svg-mail-icon path {
+  fill: var(--text-color)
+}
+
+.contacts-link:hover svg path,
+.contacts-link:hover svg polyline {
+  stroke: var(--purple-color);
+}
+
+.contacts-link:hover .svg-mail-icon path {
+  fill: var(--purple-color)
+}
+
+.mobile-contacts-list .contacts-link:hover svg path,
+.mobile-contacts-list .contacts-link:hover svg polyline {
+  stroke: var(--yellow-color);
+}
+
+.mobile-contacts-list .contacts-link:hover .svg-mail-icon path {
+  fill: var(--yellow-color)
 }
 
 .mobile-nav {
@@ -132,7 +173,7 @@
   display: block;
   width: 100%;
   height: 2px;
-  background: #000;
+  background: var(--black-color);
 }
 
 .burger::before {
@@ -143,7 +184,7 @@
   right: 0;
   width: 75%;
   height: 2px;
-  background: #000;
+  background: var(--black-color);
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
@@ -157,14 +198,14 @@
   bottom: 0;
   width: 50%;
   height: 2px;
-  background: #000;
+  background: var(--black-color);
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
 }
 
 .mobile-menu {
-  background: #f5f5f5;
+  background: var(--mobile-menu);
   min-width: 250px;
   height: 100%;
   position: fixed;
@@ -207,6 +248,9 @@
 }
 
 .offcanvas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px;
 }
 
@@ -278,11 +322,10 @@
 
 .mobile-link {
   position: relative;
-  color: #000;
 }
 
 .mobile-link:hover {
-  color: inherit;
+  color: var(--yellow-color);
 }
 
 .mobile-link::before {

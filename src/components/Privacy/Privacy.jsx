@@ -1,4 +1,3 @@
-import "./Privacy.css";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo/logo.png";
 
@@ -8,6 +7,7 @@ export default function Privacy() {
       <main className="main main__privacy">
         <Link className="navbar-brand p-0 header__logo" to="/">
           <img src={logo} alt="логотип" />
+          <p>web-studio</p>
         </Link>
         <h1 className="privacy__title">
           Политика в отношении обработки персональных данных

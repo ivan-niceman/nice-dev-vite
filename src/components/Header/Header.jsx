@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { buttonAnimation } from "../../utils/buttonAnimation";
 import Navigation from "../Navigation/Navigation";
 import ContactsMessage from "../ContactsMessage/ContactsMessage";
-import "./Header.css";
 
 export default function Header() {
   const [formData, setFormData] = useState({
@@ -13,6 +11,7 @@ export default function Header() {
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
 
   const handleInputChange = (e) => {
     setFormData({
@@ -21,33 +20,52 @@ export default function Header() {
     });
   };
 
+  const validateForm = () => {
+    let errors = {};
+    if (!formData.name.trim()) {
+      errors.name = "Введите имя";
+    }
+    if (!formData.email.trim()) {
+      errors.email = "Введите электронную почту";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.email = "Не правильный формат электронной почты";
+    }
+    if (!formData.message.trim()) {
+      errors.message = "Введите текст";
+    }
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch("./php/send-form-header.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams(formData).toString(),
-      });
+    if (validateForm()) {
+      try {
+        const response = await fetch("./php/send-form-header.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams(formData).toString(),
+        });
 
-      if (response.ok) {
-        setFormSubmitted(true);
-        setTimeout(() => {
-          setFormSubmitted(false);
-          setFormData({
-            name: "",
-            email: "",
-            message: "",
-          });
-        }, 2000);
-      } else {
-        console.error("Ошибка отправки данных");
+        if (response.ok) {
+          setFormSubmitted(true);
+          setTimeout(() => {
+            setFormSubmitted(false);
+            setFormData({
+              name: "",
+              email: "",
+              message: "",
+            });
+          }, 2000);
+        } else {
+          console.error("Ошибка отправки данных");
+        }
+      } catch (error) {
+        console.error("Ошибка:", error.message);
       }
-    } catch (error) {
-      console.error("Ошибка:", error.message);
     }
   };
 
@@ -81,7 +99,9 @@ export default function Header() {
             id="form-header"
             className="header__form"
             onSubmit={handleFormSubmit}
+            noValidate
           >
+            <label className="popup__form-label">
             <input
               type="text"
               name="name"
@@ -89,8 +109,10 @@ export default function Header() {
               placeholder="Имя"
               value={formData.name}
               onChange={handleInputChange}
-              required
             />
+            <span className="form-error">{formErrors.name}</span>
+            </label>
+            <label className="popup__form-label">
             <input
               type="email"
               name="email"
@@ -98,8 +120,10 @@ export default function Header() {
               placeholder="Эл. почта"
               value={formData.email}
               onChange={handleInputChange}
-              required
             />
+            <span className="form-error">{formErrors.email}</span>
+            </label>
+            <label className="popup__form-label">
             <textarea
               name="message"
               id="message"
@@ -109,6 +133,8 @@ export default function Header() {
               onChange={handleInputChange}
               required
             ></textarea>
+            <span className="form-error">{formErrors.message}</span>
+            </label>
             <div className="header__form-submit">
               <button type="submit" aria-label="отправить" className="form-btn">
                 <span className="container-button"></span>
@@ -116,9 +142,9 @@ export default function Header() {
               </button>
               <p className="header__form-paragraph">
                 Отправляя сообщение вы соглашаетесь на&nbsp;
-                <Link to="/privacy" className="privacy">
+                <a href="/privacy" className="privacy" target="_blank">
                   обработку персональных данных
-                </Link>
+                </a>
               </p>
             </div>
           </form>

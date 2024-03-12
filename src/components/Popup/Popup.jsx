@@ -1,4 +1,3 @@
-import "./Popup.css";
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -46,6 +45,7 @@ export default function Popup({ isOpen, onClose }) {
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
 
   const handleInputChange = (e) => {
     setFormData({
@@ -54,34 +54,52 @@ export default function Popup({ isOpen, onClose }) {
     });
   };
 
+  const validateForm = () => {
+    let errors = {};
+    if (!formData.name.trim()) {
+      errors.name = "Введите имя";
+    }
+    if (!formData.email.trim()) {
+      errors.email = "Введите электронную почту";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.email = "Не правильный формат электронной почты";
+    }
+    if (!formData.message.trim()) {
+      errors.message = "Введите текст";
+    }
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch("./php/form-popup.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams(formData).toString(),
-      });
-
-      if (response.ok) {
-        setFormSubmitted(true);
-        setTimeout(() => {
-          setFormSubmitted(false);
-          setFormData({
-            name: "",
-            email: "",
-            message: "",
-          });
-          closePopup();
-        }, 2000);
-      } else {
-        console.error("Ошибка отправки данных");
+    if (validateForm()) {
+      try {
+        const response = await fetch("./php/form-popup.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams(formData).toString(),
+        });
+        if (response.ok) {
+          setFormSubmitted(true);
+          setTimeout(() => {
+            setFormSubmitted(false);
+            setFormData({
+              name: "",
+              email: "",
+              message: "",
+            });
+            closePopup();
+          }, 2000);
+        } else {
+          console.error("Ошибка отправки данных");
+        }
+      } catch (error) {
+        console.error("Ошибка:", error.message);
       }
-    } catch (error) {
-      console.error("Ошибка:", error.message);
     }
   };
 
@@ -103,6 +121,7 @@ export default function Popup({ isOpen, onClose }) {
           id="form-popup"
           className="popup__form"
           onSubmit={handleFormSubmit}
+          noValidate
         >
           <label className="popup__form-label">
             <input
@@ -113,8 +132,8 @@ export default function Popup({ isOpen, onClose }) {
               id="name-image-input"
               value={formData.name}
               onChange={handleInputChange}
-              required
             />
+            <span className="form-error">{formErrors.name}</span>
           </label>
           <label className="popup__form-label">
             <input
@@ -125,8 +144,8 @@ export default function Popup({ isOpen, onClose }) {
               id="image-link-input"
               value={formData.email}
               onChange={handleInputChange}
-              required
             />
+            <span className="form-error">{formErrors.email}</span>
           </label>
           <label className="popup__form-label">
             <textarea
@@ -135,8 +154,8 @@ export default function Popup({ isOpen, onClose }) {
               className="popup__input popup__textarea"
               value={formData.message}
               onChange={handleInputChange}
-              required
             ></textarea>
+            <span className="form-error">{formErrors.message}</span>
           </label>
           <button
             type="submit"

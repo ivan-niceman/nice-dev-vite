@@ -1,8 +1,6 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-# Проект nice-dev studios
+# Project nice-dev studios
 
 #### Stack:
 
@@ -14,13 +12,13 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 ---
 
-### Запуск проекта
+### Project launch
 
-`npm run dev` — запускает проект
-`npm run build` — собирает проект
+`npm run dev` — project launch
+`npm run build` — assembles the project
 
 ---
 
-#### Ссылка на сайт
+#### Website link
 
 [nice-dev.ru](https://nice-dev.ru)
