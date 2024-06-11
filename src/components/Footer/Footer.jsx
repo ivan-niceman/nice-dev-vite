@@ -65,7 +65,7 @@ export default function Footer() {
         <ul className="footer__list-menu">
           {nav.map((nav, index) => (
             <li className="footer__item-menu" key={index}>
-            <HashLink smooth className="footer__link-menu" to={`#${nav.link}`}>
+            <HashLink smooth className="footer__link-menu" to={`/#${nav.link}`}>
               {nav.name}
             </HashLink>
           </li>
