@@ -1,14 +1,10 @@
-import { Link } from "react-router-dom";
-import logo from "../../images/logo/logo.png";
+import Navigation from "../Navigation/Navigation";
 
 export default function Privacy() {
   return (
     <>
       <main className="main main__privacy">
-        <Link className="navbar-brand p-0 header__logo" to="/">
-          <img src={logo} alt="логотип" />
-          <p>web-studio</p>
-        </Link>
+        <Navigation />
         <h1 className="privacy__title">
           Политика в отношении обработки персональных данных
         </h1>

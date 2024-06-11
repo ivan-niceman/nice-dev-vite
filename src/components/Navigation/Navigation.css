@@ -1,4 +1,7 @@
 .header__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   column-gap: 20px;
 }
 
@@ -23,6 +26,7 @@
   letter-spacing: 3px;
   font-weight: 600;
   transform: translateY(-8px);
+  transition: .3s;
 }
 
 .footer__logo p {
@@ -30,8 +34,9 @@
 }
 
 .header__menu {
-  width: 100%;
+  display: flex;
   justify-content: space-evenly;
+  width: 100%;
 }
 
 .menu-item {
@@ -41,8 +46,8 @@
 .menu-item:after {
   content: "";
   position: absolute;
-  bottom: 0;
-  border-bottom: 1px solid var(--purple-color);
+  left: 0;
+  bottom: -1px;
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -54,13 +59,22 @@
   transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
+.menu-item-border-color:after {
+  border-bottom: 1px solid var(--purple-color);
+}
+
+.menu-item-border-color-yellow:after {
+  border-bottom: 1px solid var(--purple-to-yellow-color);
+}
+
 .menu-item:hover::after {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
 }
 
-.header__menu-text {
+.header__menu-text,
+.header__menu-text-yellow {
   font-size: 18px;
   line-height: 21px;
   letter-spacing: 1px;
@@ -73,12 +87,13 @@
   color: var(--purple-color);
 }
 
-.nav-link {
-  color: var(--text-color);
+.header__menu-text-yellow:hover {
+  color: var(--purple-to-yellow-color);
 }
 
-.navbar-nav .nav-link.active:hover {
-  color: var(--purple-color);
+.nav-link {
+  color: var(--text-color);
+  transition: .3s;
 }
 
 .contacts-list {
@@ -95,39 +110,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25px;
-  height: 25px;
-}
-
-.contacts-link.mail-icon {
-  width: 30px;
 }
 
 .contacts-link svg path,
-.contacts-link svg polyline {
+.contacts-link svg polyline,
+.contacts-link-yellow svg path,
+.contacts-link-yellow svg polyline {
   stroke: var(--text-color);
 }
 
-.contacts-link .svg-mail-icon path {
-  fill: var(--text-color)
-}
-
-.contacts-link:hover svg path,
-.contacts-link:hover svg polyline {
+.contacts-link svg:hover path,
+.contacts-link svg:hover polyline {
   stroke: var(--purple-color);
 }
 
-.contacts-link:hover .svg-mail-icon path {
-  fill: var(--purple-color)
+.contacts-link-yellow svg:hover path,
+.contacts-link-yellow svg:hover polyline {
+  stroke: var(--purple-to-yellow-color);
 }
 
-.mobile-contacts-list .contacts-link:hover svg path,
-.mobile-contacts-list .contacts-link:hover svg polyline {
-  stroke: var(--yellow-color);
-}
-
-.mobile-contacts-list .contacts-link:hover .svg-mail-icon path {
-  fill: var(--yellow-color)
+.mobile-contacts-list svg:hover path,
+.mobile-contacts-list svg:hover polyline {
+  stroke: var(--purple-to-yellow-color);
 }
 
 .mobile-nav {
@@ -147,11 +151,12 @@
 
 .burger-menu {
   width: auto;
+  height: fit-content;
   margin: 0;
   padding: 0;
 }
 
-.navbar-toggler {
+.burger-button {
   display: flex;
   position: relative;
   border: none;
@@ -202,6 +207,11 @@
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
+}
+
+.burger-button:hover .burger::before,
+.burger-button:hover .burger::after {
+  width: 100%;
 }
 
 .mobile-menu {
@@ -322,6 +332,8 @@
 
 .mobile-link {
   position: relative;
+  display: block;
+  width: 100%;
 }
 
 .mobile-link:hover {

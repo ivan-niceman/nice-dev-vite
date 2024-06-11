@@ -3,6 +3,7 @@ import AboutWork from "../AboutWork/AboutWork";
 import OurServices from "../OurServices/OurServices";
 import Price from "../Price/Price";
 import Portfolio from "../Portfolio/Portfolio";
+import Feedback from "../Feedback/Feedback";
 import Questions from "../Questions/Questions";
 
 export default function Main() {
@@ -13,6 +14,7 @@ export default function Main() {
       <OurServices />
       <Price />
       <Portfolio />
+      <Feedback />
       <Questions />
     </main>
   );

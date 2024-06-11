@@ -40,7 +40,11 @@ main {
 
 h1 {
   font-size: 2em;
-  margin: 0.67em 0;
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
 }
 
 /* Grouping content
@@ -198,6 +202,11 @@ select {
   text-transform: none;
 }
 
+button {
+  cursor: pointer;
+  background-color: transparent;
+}
+
 /**
  * Correct the inability to style clickable types in iOS and Safari.
  */
@@ -219,17 +228,6 @@ button::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
-}
-
-/**
- * Restore the focus styles unset by the previous rule.
- */
-
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
 }
 
 /**

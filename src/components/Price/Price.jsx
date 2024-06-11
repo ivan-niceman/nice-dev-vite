@@ -46,7 +46,7 @@ const priceContent = [
 
 export default function Price() {
   return (
-    <section className="our-price" id="price">
+    <section className="our-price container" id="price">
       <h2 className="main__title">сколько стоит?</h2>
       <ul className="price-list">
         {priceContent.map(({ work, price, time, description }, index) => (

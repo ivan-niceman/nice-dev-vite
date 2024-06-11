@@ -1,3 +1,6 @@
+import PropTypes from "prop-types";
+import Slider from "react-slick";
+
 import partner1 from "../../images/partners/partner1.webp";
 import partner2 from "../../images/partners/partner2.webp";
 import partner3 from "../../images/partners/partner3.webp";
@@ -17,15 +20,56 @@ const aboutUsContent = [
   },
   {
     image: partner3,
-    profession: `Front-end developer`,
+    profession: `Front-end Team Lead`,
     name: `Иван`,
     description: `Качественно и внимательно напишу ваш сайт с учётом всех новинок мира web-разработки.`,
   },
 ];
 
-export default function About() {
+function SampleNextArrow(props) {
+  const { onClick } = props;
   return (
-    <section className="about" id="about">
+    <button
+      className="slick-arrow next-arrow"
+      onClick={onClick}
+    >
+      <svg viewBox="0 0 24 24" fill="none"><path d="M21 12L16 7M21 12L16 17M21 12H3" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
+    </button>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <button
+      className="slick-arrow prev-arrow"
+      onClick={onClick}
+    >
+      <svg viewBox="0 0 24 24" fill="none"><path d="M21 12L16 7M21 12L16 17M21 12H3" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
+    </button>
+  );
+}
+
+SampleNextArrow.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
+SamplePrevArrow.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
+export default function About() {
+  const settings = {
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 10000,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />
+  };
+  return (
+    <section className="about container" id="about">
       <h2 className="main__title">кто мы?</h2>
       <section className="about__us">
         <section>
@@ -52,52 +96,31 @@ export default function About() {
           </p>
         </section>
         <section className="about__right">
-          <div
-            id="carouselExampleInterval"
-            className="carousel slide carousel-fade about__carousel"
-            data-ride="carousel"
-            data-touch="true"
-          >
-            <ul className="carousel-inner about__right-carousel">
-              {aboutUsContent.map(
-                ({ image, profession, name, description }, index) => (
-                  <li
-                    className={`carousel-item ${index === 0 ? "active" : ""}`}
-                    data-interval="10000"
-                    key={index}
-                  >
-                    <div className="card about__card">
-                      <img
-                        src={image}
-                        className="card__size"
-                        alt="дизайнер Наталья"
-                      />
-                      <div className="card-body">
-                        <h3 className="about__card-profession">{profession}</h3>
-                        <h4 className="about__card-name">{name}</h4>
-                        <p className="about__card-text">{description}</p>
+          <div className="about__carousel">
+            <div className="about__right-carousel">
+              <Slider {...settings}>
+                {aboutUsContent.map(
+                  ({ image, profession, name, description }, index) => (
+                    <div key={index}>
+                      <div className="about__card">
+                        <img
+                          src={image}
+                          className="card-size"
+                          alt="дизайнер Наталья"
+                        />
+                        <div className="about__card-body">
+                          <h3 className="about__card-profession">
+                            {profession}
+                          </h3>
+                          <h4 className="about__card-name">{name}</h4>
+                          <p className="about__card-text">{description}</p>
+                        </div>
                       </div>
                     </div>
-                  </li>
-                ),
-              )}
-            </ul>
-            <a
-              className="carousel-control-prev carousel-button"
-              href="#carouselExampleInterval"
-              role="button"
-              data-slide="prev"
-            >
-              <span className="material-symbols-outlined">arrow_left_alt</span>
-            </a>
-            <a
-              className="carousel-control-next carousel-button"
-              href="#carouselExampleInterval"
-              role="button"
-              data-slide="next"
-            >
-              <span className="material-symbols-outlined">arrow_right_alt</span>
-            </a>
+                  ),
+                )}
+              </Slider>
+            </div>
           </div>
         </section>
       </section>

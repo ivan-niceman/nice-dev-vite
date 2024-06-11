@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { buttonAnimation } from "../../utils/buttonAnimation";
 import Navigation from "../Navigation/Navigation";
 import ContactsMessage from "../ContactsMessage/ContactsMessage";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [formData, setFormData] = useState({
@@ -75,82 +76,91 @@ export default function Header() {
 
   return (
     <header className="header">
-      <span className="header__section-white"></span>
-      <span className="header__section-yellow"></span>
-      <Navigation />
-      <section className="header__titles">
-        <h1 className="header__title-left">
-          СОБИРАЕМ И ЗАПУСКАЕМ
-          <span className="header__title-left-color"> ПРОДАЮЩИЕ </span>
-          САЙТЫ турфирм
-        </h1>
-        <h2 className="header__title-right">
-          создаем
-          <span className="header__title-right-color"> успешный </span> и
-          узнаваемый бренд
-        </h2>
-      </section>
-
-      <section className="header__bottom">
-        <span className="header__image"></span>
-        <section className="header__section-form">
-          <h2 className="header__form-title">бесплатная консультация</h2>
-          <form
-            id="form-header"
-            className="header__form"
-            onSubmit={handleFormSubmit}
-            noValidate
-          >
-            <label className="popup__form-label">
-            <input
-              type="text"
-              name="name"
-              className="form-contacts"
-              placeholder="Имя"
-              value={formData.name}
-              onChange={handleInputChange}
-            />
-            <span className="form-error">{formErrors.name}</span>
-            </label>
-            <label className="popup__form-label">
-            <input
-              type="email"
-              name="email"
-              className="form-contacts"
-              placeholder="Эл. почта"
-              value={formData.email}
-              onChange={handleInputChange}
-            />
-            <span className="form-error">{formErrors.email}</span>
-            </label>
-            <label className="popup__form-label">
-            <textarea
-              name="message"
-              id="message"
-              className="send-text"
-              placeholder="Ваши пожелания?"
-              value={formData.message}
-              onChange={handleInputChange}
-              required
-            ></textarea>
-            <span className="form-error">{formErrors.message}</span>
-            </label>
-            <div className="header__form-submit">
-              <button type="submit" aria-label="отправить" className="form-btn">
-                <span className="container-button"></span>
-                <span>Отправить</span>
-              </button>
-              <p className="header__form-paragraph">
-                Отправляя сообщение вы соглашаетесь на&nbsp;
-                <a href="/privacy" className="privacy" target="_blank">
-                  обработку персональных данных
-                </a>
-              </p>
-            </div>
-          </form>
-          <ContactsMessage formSubmitted={formSubmitted} />
+      <span className="header__section-white" />
+      <span className="header__section-yellow" />
+      <div className="container">
+        <Navigation />
+        <section className="header__titles">
+          <h1 className="header__title-left">
+            СОБИРАЕМ И ЗАПУСКАЕМ
+            <span className="header__title-left-color"> ПРОДАЮЩИЕ </span>
+            САЙТЫ турфирм
+          </h1>
+          <h2 className="header__title-right">
+            создаем
+            <span className="header__title-right-color"> успешный </span> и
+            узнаваемый бренд
+          </h2>
         </section>
-      </section>
+
+        <section className="header__bottom">
+          <span className="header__image"></span>
+          <section className="header__section-form">
+            <h2 className="header__form-title">бесплатная консультация</h2>
+            <form
+              id="form-header"
+              className="header__form"
+              onSubmit={handleFormSubmit}
+              noValidate
+            >
+              <label className="popup-form-label">
+                <input
+                  type="text"
+                  name="name"
+                  className="form-contacts"
+                  placeholder="Имя"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                />
+                <span className="form-error">{formErrors.name}</span>
+              </label>
+              <label className="popup-form-label">
+                <input
+                  type="email"
+                  name="email"
+                  className="form-contacts"
+                  placeholder="Эл. почта"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                />
+                <span className="form-error">{formErrors.email}</span>
+              </label>
+              <label className="popup-form-label">
+                <textarea
+                  name="message"
+                  id="message"
+                  className="send-text"
+                  placeholder="Ваши пожелания?"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                ></textarea>
+                <span className="form-error">{formErrors.message}</span>
+              </label>
+              <div className="header__form-submit">
+                <button
+                  type="submit"
+                  aria-label="отправить"
+                  className="form-btn"
+                >
+                  <span className="container-button"></span>
+                  <span>Отправить</span>
+                </button>
+                <p className="header__form-paragraph">
+                  Отправляя сообщение вы соглашаетесь на&nbsp;
+                  <Link
+                    to="/privacy"
+                    className="privacy"
+                  >
+                    обработку персональных данных
+                  </Link>
+                </p>
+              </div>
+            </form>
+            <ContactsMessage formSubmitted={formSubmitted} />
+          </section>
+        </section>
+      </div>
     </header>
   );
 }

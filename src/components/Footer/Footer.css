@@ -56,6 +56,7 @@
   .footer__list-menu {
     flex-direction: column;
     align-items: center;
+    row-gap: 10px;
   }
 }
 
@@ -86,15 +87,13 @@
 .footer__link-menu {
   display: block;
   color: var(--white-text-color);
-  cursor: pointer;
+  letter-spacing: 1px;
   transition: 0.3s;
-  padding: 0;
   font-size: 18px;
 }
 
 .footer__link-menu:hover {
   color: var(--white-text-color);
-  text-decoration: none;
 }
 
 @media (max-width: 480px) {
@@ -102,23 +101,4 @@
     order: 1;
     margin: 0 0 30px;
   }
-}
-
-.footer-contacts-link {
-  display: block;
-  width: 25px;
-  height: 25px;
-}
-
-.footer-contacts-link.mail-icon {
-  width: 30px;
-}
-
-.footer-contacts-link:hover svg path,
-.footer-contacts-link:hover svg polyline {
-  stroke: var(--yellow-color);
-}
-
-.footer-contacts-link:hover .svg-mail-icon path {
-  fill: var(--yellow-color)
 }

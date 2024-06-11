@@ -13,7 +13,7 @@ export default function Questions() {
   };
 
   return (
-    <section className="questions">
+    <section className="questions container">
       <h2 className="main__title">Часто задаваемые вопросы</h2>
       <section className="section-questions">
         <section className="question-section-left">

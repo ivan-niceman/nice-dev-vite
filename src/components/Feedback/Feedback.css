@@ -1,0 +1,141 @@
+.feedback .main__title {
+  max-width: 1920px;
+  padding: 100px 50px 0;
+}
+
+@media(max-width: 768px) {
+  .feedback .main__title {
+    padding: 135px 20px 0;
+  }
+}
+
+.feedback-section {
+  padding: 60px 50px 100px;
+  background: linear-gradient(151.62deg, rgb(251, 180, 44) 30.896%, rgb(222, 115, 249) 81.545%);
+}
+
+@media(max-width: 768px) {
+  .feedback-section {
+    padding: 60px 0px 100px;
+  }
+}
+
+.feedback-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 2px 7px var(--black-color);
+}
+
+.feedback-link {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 25px;
+  padding: 30px 20px;
+  position: relative;
+  background-color: var(--gray-block);
+  border-radius: 10px;
+  margin: 10px 10px 20px;
+  transition: .3s;
+}
+
+.feedback-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px var(--black-color);
+}
+
+@media(max-width: 425px) {
+  .feedback-link {
+    padding: 20px 10px;
+  }
+}
+
+.feedback-image {
+  max-width: 60px;
+  width: 100%;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: contain;
+  outline: 1px solid var(--text-color);
+  background-repeat: no-repeat;
+  background-size: 45px;
+  background-position: center;
+  transition: .3s;
+}
+
+.feedback-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: fit-content;
+}
+
+.feedback-client {
+  color: var(--text-color);
+  font-size: 14px;
+  line-height: 20px;
+  height: 100px;
+  margin: 0 0 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.feedback-client-contact {
+  border-top: 1px solid var(--yellow-color);
+  padding-top: 10px;
+}
+
+.feedback-client-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.client-name {
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  transition: .3s;
+}
+
+.feedback-client-website {
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  margin: 0;
+  transition: .3s;
+}
+
+.feedback-client-website:hover {
+  color: var(--text-color);
+}
+
+.feedback-date {
+  color: var(--text-color);
+  transition: .3s;
+}
+
+.feedback-corner {
+  position: absolute;
+  bottom: -20px;
+  left: 10%;
+  fill: var(--gray-block);
+}
+
+.feedback-section .slick-arrow {
+  border: 2px solid var(--white-color);
+  background-color: transparent;
+  bottom: -70px;
+  right: 15px;
+}
+
+.feedback-section .slick-arrow path {
+  stroke: var(--white-color);
+}
+
+.feedback-section .prev-arrow {
+  right: 90px;
+}
+

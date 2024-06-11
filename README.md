@@ -1,6 +1,6 @@
 # React + Vite
 
-# Project nice-dev studios
+# Project nice-dev studio
 
 #### Stack:
 
@@ -8,7 +8,6 @@
 - CSS
 - React
 - PHP
-- Bootstrap
 
 ---
 

@@ -1,6 +1,6 @@
 export default function OurServices() {
   return (
-    <section className="our-services" id="services">
+    <section className="our-services container" id="services">
         <h2 className="main__title">наши услуги</h2>
         <ul className="services-list">
           <li className="services-item">

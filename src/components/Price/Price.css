@@ -2,15 +2,9 @@
   padding: 100px 50px 0;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .our-price {
-    padding: 70px 25px 0
-  }
-}
-
-@media (max-width:425px) {
-  .our-price {
-    padding: 30px 20px 0
+    padding: 100px 20px 0
   }
 }
 
@@ -27,23 +21,25 @@
 
 .price-item {
   display: flex;
-  flex-wrap: wrap;
+  gap: 15px 30px;
   align-items: center;
   background: var(--gray-block);
   border-radius: 20px;
   padding: 35px 20px;
   box-shadow: 0 5px 10px var(--box-shadow);
+  transition: .3s;
 }
 
-@media (max-width: 1287px) {
+@media (max-width: 1200px) {
   .price-item {
-    justify-content: center;
+    flex-wrap: wrap;
     padding: 20px;
   }
 }
 
 .price-works {
-  flex-basis: 256px;
+  max-width: 256px;
+  width: 100%;
   height: 100px;
   background: var(--purple-to-yellow-color);
   border-radius: 15px;
@@ -52,17 +48,18 @@
   line-height: 28px;
   display: flex;
   align-items: center;
+  justify-content: center;
   text-align: center;
   color: var(--box-shadow);
   padding: 0 15px;
-  margin: 0 45px;
+  margin: 0;
+  transition: .3s;
 }
 
-@media (max-width: 1287px) {
+@media (max-width: 1200px) {
   .price-works {
-    margin: 0 0 35px;
-    flex-basis: 100%;
-    justify-content: center;
+    max-width: 100%;
+    margin-bottom: 15px;
   }
 }
 
@@ -73,16 +70,16 @@
 }
 
 .price-block {
-  flex-basis: 20%;
-  margin: 0 10px 0 0;
+  max-width: 170px;
+  width: 100%;
+  text-align: center;
   color: var(--text-color);
+  transition: .3s;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 810px) {
   .price-block {
-    flex-basis: 100%;
-    text-align: center;
-    margin: 0;
+    max-width: 100%;
   }
 }
 
@@ -103,20 +100,19 @@
   font-size: 18px;
   line-height: 21px;
   margin: 0;
-  flex-basis: 50%;
   color: var(--text-color);
+  transition: .3s;
 }
 
-@media (max-width: 1252px) {
+@media (max-width: 1200px) {
   .price-about-works {
     flex-basis: 70%;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 810px) {
   .price-about-works {
     flex-basis: 100%;
-    margin: 15px 0 0;
     text-align: center;
     font-size: 16px;
   }

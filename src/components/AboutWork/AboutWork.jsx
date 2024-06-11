@@ -1,3 +1,6 @@
+import PropTypes from "prop-types";
+import Slider from "react-slick";
+
 const aboutOurWorkContent = [
   {
     title: `исследование`,
@@ -17,60 +20,72 @@ const aboutOurWorkContent = [
   },
 ];
 
-export default function AboutWork() {
+function SampleNextArrow(props) {
+  const { onClick } = props;
   return (
-    <section className="about-our-work">
+    <button
+      className="slick-arrow next-arrow"
+      onClick={onClick}
+    >
+      <svg viewBox="0 0 24 24" fill="none"><path d="M21 12L16 7M21 12L16 17M21 12H3" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
+    </button>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <button
+      className="slick-arrow prev-arrow"
+      onClick={onClick}
+    >
+      <svg viewBox="0 0 24 24" fill="none"><path d="M21 12L16 7M21 12L16 17M21 12H3" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
+    </button>
+  );
+}
+
+SampleNextArrow.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
+SamplePrevArrow.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
+export default function AboutWork() {
+  const settings = {
+    infinite: false,
+    slidesToShow: 4,
+    swipe: false,
+    variableWidth: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          swipe: true,
+        },
+      },
+    ],
+  };
+  return (
+    <section className="about-our-work container">
       <h2 className="main__title">как мы работаем?</h2>
-      <ul className="about-specialty">
-        {aboutOurWorkContent.map(({ title, description }, index) => (
-          <li
-            className="carousel-item active"
-            data-interval="10000"
-            key={index}
-          >
-            <div className="about-specialty-card">
-              <h2 className="about-specialty-title">{title}</h2>
-              <p className="about-specialty-paragraph">{description}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <div
-        id="carouselExampleInterval1"
-        className="carousel slide about-specialty-carousel"
-        data-ride="carousel"
-        data-touch="true"
-      >
-        <ul className="carousel-inner about-specialty-carousel-inner">
+      <div className="about-specialty">
+        <Slider {...settings}>
           {aboutOurWorkContent.map(({ title, description }, index) => (
-            <li
-              className={`carousel-item ${index === 0 ? "active" : ""}`}
-              data-interval="10000"
-              key={index}
-            >
+            <div key={index}>
               <div className="about-specialty-card">
                 <h2 className="about-specialty-title">{title}</h2>
                 <p className="about-specialty-paragraph">{description}</p>
               </div>
-            </li>
+            </div>
           ))}
-        </ul>
-        <a
-          className="carousel-control-prev carousel-button carousel-button-left"
-          href="#carouselExampleInterval1"
-          role="button"
-          data-slide="prev"
-        >
-          <span className="material-symbols-outlined">arrow_left_alt</span>
-        </a>
-        <a
-          className="carousel-control-next carousel-button carousel-button-right"
-          href="#carouselExampleInterval1"
-          role="button"
-          data-slide="next"
-        >
-          <span className="material-symbols-outlined">arrow_right_alt</span>
-        </a>
+        </Slider>
       </div>
     </section>
   );

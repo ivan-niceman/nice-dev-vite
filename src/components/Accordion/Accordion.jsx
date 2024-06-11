@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const accordionContent = [
   {
     title: `Что входит в создание сайта?`,
@@ -26,39 +28,27 @@ const accordionContent = [
 ];
 
 export default function Accordion() {
+  const [openId, setOpenId] = useState(null);
+
+  function clickHandler(index) {
+    setOpenId(openId === index ? null : index);
+  }
+
   return (
-    <ul className="accordion" id="accordionExample">
+    <ul className="accordion">
       {accordionContent.map(({ title, content }, index) => (
-        <li className="card accordion-item" key={index}>
-          <h2 className="card-header">
-            <button
-              className="accordion-button accordion__button-image collapsed"
-              type="button"
-              data-toggle="collapse"
-              data-target={`#collapse${index}`}
-            >
-              {title}
-            </button>
-              <svg
-                className="accordion-icon"
-                width="40"
-                height="40"
-                viewBox="0 0 40 40"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M20.3333 0L20.3333 40M0 19.6667H40"
-                  strokeWidth="3"
-                />
-              </svg>
-          </h2>
-          <div
-            id={`collapse${index}`}
-            className="collapse"
-            data-parent="#accordionExample"
+        <li className="accordion-item" key={index}>
+          <button
+            className={`accordion-button ${openId === index ? "open" : ""}`}
+            type="button"
+            onClick={() => clickHandler(index)}
           >
-            <p className="card-body questions__paragraph">{content}</p>
+            <p>{title}</p>
+            <span>+</span>
+          </button>
+          <div className={`accordion-collapse ${openId === index ? "open" : ""}`}
+          >
+            <p className="questions__paragraph">{content}</p>
           </div>
         </li>
       ))}
