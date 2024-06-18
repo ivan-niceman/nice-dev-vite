@@ -40,6 +40,7 @@ export default function Popup({ isOpen, onClose }) {
 
   const [formData, setFormData] = useState({
     name: "",
+    tel: "",
     email: "",
     message: "",
   });
@@ -58,6 +59,13 @@ export default function Popup({ isOpen, onClose }) {
     let errors = {};
     if (!formData.name.trim()) {
       errors.name = "Введите имя";
+    }
+    if (!formData.tel.trim()) {
+      errors.tel = "Введите номер телефона";
+    } else if (!/^\+?[0-9]{10,15}$/.test(formData.tel)) {
+      errors.tel = "Не правильный формат. Пример: 7999999999";
+    } else {
+      formData.tel = formData.tel.replace(/\+/, '');
     }
     if (!formData.email.trim()) {
       errors.email = "Введите электронную почту";
@@ -89,6 +97,7 @@ export default function Popup({ isOpen, onClose }) {
             setFormSubmitted(false);
             setFormData({
               name: "",
+              tel: "",
               email: "",
               message: "",
             });
@@ -145,6 +154,18 @@ export default function Popup({ isOpen, onClose }) {
               onChange={handleInputChange}
             />
             <span className="form-error">{formErrors.name}</span>
+          </label>
+          <label className="popup-form-label">
+            <input
+              type="tel"
+              name="tel"
+              placeholder="Введите номер телефона"
+              className="popup__input"
+              id="image-link-input"
+              value={formData.tel}
+              onChange={handleInputChange}
+            />
+            <span className="form-error">{formErrors.tel}</span>
           </label>
           <label className="popup-form-label">
             <input
