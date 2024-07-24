@@ -9,11 +9,11 @@ import Questions from "../Questions/Questions";
 export default function Main() {
   return (
     <main className="main">
+      <Portfolio />
       <About />
       <AboutWork />
       <OurServices />
       <Price />
-      <Portfolio />
       <Feedback />
       <Questions />
     </main>

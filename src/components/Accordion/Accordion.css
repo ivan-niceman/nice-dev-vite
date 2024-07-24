@@ -1,4 +1,5 @@
 .accordion-item {
+  overflow: hidden;
   background-color: var(--body_background-color);
 }
 .accordion-item::before {
@@ -81,11 +82,10 @@
 
 .accordion-collapse {
   max-height: 0;
-  overflow: hidden;
-  transition: all .3s ease;
+  transition: max-height .3s ease;
+  max-height: 0;
 }
 
 .accordion-collapse.open {
-  height: auto;
-  max-height: 150px;
+  max-height: 120px;
 }

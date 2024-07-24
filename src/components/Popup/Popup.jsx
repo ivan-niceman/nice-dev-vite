@@ -1,8 +1,9 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { buttonAnimation } from "../../utils/buttonAnimation";
 import ContactsMessage from "../ContactsMessage/ContactsMessage";
+import Preloader from "../Preloader/Preloader";
 
 Popup.propTypes = {
   isOpen: PropTypes.bool.isRequired,
@@ -10,31 +11,15 @@ Popup.propTypes = {
 };
 
 export default function Popup({ isOpen, onClose }) {
-  const closePopup = useCallback(() => {
-    onClose();
-  }, [onClose]);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const handleOverlayClick = (event) => {
-      if (isOpen && event.target.classList.contains("popup_opened")) {
-        closePopup();
-      }
-    };
+  const handleEscKey = (event) => {
+    if (isOpen && (event.key === "Escape" || event.key === "Esc")) {
+      onClose();
+    }
+  };
 
-    const handleEscKey = (event) => {
-      if (isOpen && (event.key === "Escape" || event.key === "Esc")) {
-        closePopup();
-      }
-    };
-
-    document.addEventListener("click", handleOverlayClick);
-    document.addEventListener("keydown", handleEscKey);
-
-    return () => {
-      document.removeEventListener("click", handleOverlayClick);
-      document.removeEventListener("keydown", handleEscKey);
-    };
-  }, [closePopup, isOpen]);
+  document.addEventListener("keydown", handleEscKey);
 
   // send form
 
@@ -83,6 +68,7 @@ export default function Popup({ isOpen, onClose }) {
     e.preventDefault();
 
     if (validateForm()) {
+      setLoading(true);
       try {
         const response = await fetch("./php/form-popup.php", {
           method: "POST",
@@ -101,13 +87,15 @@ export default function Popup({ isOpen, onClose }) {
               email: "",
               message: "",
             });
-            closePopup();
+            onClose();
           }, 2000);
         } else {
           console.error("Ошибка отправки данных");
         }
       } catch (error) {
         console.error("Ошибка:", error.message);
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -117,13 +105,19 @@ export default function Popup({ isOpen, onClose }) {
   }, []);
 
   return (
-    <section className={`popup${isOpen ? " popup_opened" : ""}`}>
-      <div className="popup__container">
+    <section
+      className={`popup${isOpen ? " popup_opened" : ""}`}
+      onClick={onClose}
+      >
+      <div 
+        className="popup__container"
+        onClick={e => e.stopPropagation()}
+        >
         <button
           aria-label="закрыть"
           type="button"
           className="popup__button-close"
-          onClick={closePopup}
+          onClick={onClose}
         >
           <svg
             viewBox="0 0 32 32"
@@ -195,7 +189,7 @@ export default function Popup({ isOpen, onClose }) {
             className="popup__button"
           >
             <span className="container-popup-button"></span>
-            <span>Отправить</span>
+            {loading ? <Preloader /> : `Отправить`}
           </button>
           <p className="popup__form-paragraph">
             Отправляя сообщение вы соглашаетесь на&nbsp;

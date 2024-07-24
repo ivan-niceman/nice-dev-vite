@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { buttonAnimation } from "../../utils/buttonAnimation";
 import Navigation from "../Navigation/Navigation";
 import ContactsMessage from "../ContactsMessage/ContactsMessage";
+import Preloader from "../Preloader/Preloader";
 import { Link } from "react-router-dom";
 
 export default function Header() {
@@ -14,6 +15,7 @@ export default function Header() {
 
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formErrors, setFormErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -50,6 +52,7 @@ export default function Header() {
     e.preventDefault();
 
     if (validateForm()) {
+      setLoading(true);
       try {
         const response = await fetch("./php/send-form-header.php", {
           method: "POST",
@@ -75,6 +78,8 @@ export default function Header() {
         }
       } catch (error) {
         console.error("Ошибка:", error.message);
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -164,7 +169,7 @@ export default function Header() {
                   className="form-btn"
                 >
                   <span className="container-button"></span>
-                  <span>Отправить</span>
+                  {loading ? <Preloader /> : `Отправить`}
                 </button>
                 <p className="header__form-paragraph">
                   Отправляя сообщение вы соглашаетесь на&nbsp;

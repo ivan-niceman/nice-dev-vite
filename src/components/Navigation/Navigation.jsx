@@ -11,6 +11,10 @@ import Vkontakte from "../SocialIcons/Vkontakte";
 
 const nav = [
   {
+    link: "portfolio",
+    name: "портфолио",
+  },
+  {
     link: "about",
     name: "о нас",
   },
@@ -21,10 +25,6 @@ const nav = [
   {
     link: "price",
     name: "цены",
-  },
-  {
-    link: "portfolio",
-    name: "портфолио",
   },
   {
     link: "feedback",

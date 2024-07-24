@@ -3,13 +3,14 @@ import Popup from "../Popup/Popup";
 import Accordion from "../Accordion/Accordion";
 
 export default function Questions() {
-  const [isPopupOpen, setPopupOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const togglePopup = () => {
-    setPopupOpen(!isPopupOpen);
+  const openPopupForm = () => {
+    setIsPopupOpen(true);
   };
-  const closePopup = () => {
-    setPopupOpen(false);
+
+  const closePopupForm = () => {
+    setIsPopupOpen(false);
   };
 
   return (
@@ -25,7 +26,7 @@ export default function Questions() {
           <button
             type="button"
             className="question-button"
-            onClick={togglePopup}
+            onClick={openPopupForm}
           >
             Хотите
             <br />
@@ -33,7 +34,7 @@ export default function Questions() {
           </button>
         </section>
       </section>
-      <Popup isOpen={isPopupOpen} onClose={closePopup} />
+      <Popup isOpen={isPopupOpen} onClose={closePopupForm} />
     </section>
   );
 }
