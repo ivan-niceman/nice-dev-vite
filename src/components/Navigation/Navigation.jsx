@@ -74,7 +74,7 @@ export default function Navigation() {
           <img src={logo} alt="логотип" />
           <p>web-studio</p>
         </HashLink>
-        <ul className="navbar-nav me-auto mb-lg-0 navbar-nav-scroll header__menu">
+        <ul className="header__menu">
           {nav.map((nav, index) => (
             <li className={`menu-item ${location.pathname === "/" ? "menu-item-border-color" : "menu-item-border-color-yellow"}`} key={index}>
               <HashLink
@@ -130,13 +130,14 @@ export default function Navigation() {
             <ToggleTheme id="dark-mobile" />
           </div>
           <div className="offcanvas-body">
-            <ul className="navbar-nav flex-grow-1 mobile-list">
+            <ul className="mobile-list">
               {nav.map((nav, index) => (
                 <li className="mobile-item" key={index}>
                   <HashLink
                     smooth
                     className="nav-link mobile-link"
-                    to={`#${nav.link}`}
+                    to={`/#${nav.link}`}
+                    onClick={closeMobileMenu}
                   >
                     {nav.name}
                   </HashLink>
