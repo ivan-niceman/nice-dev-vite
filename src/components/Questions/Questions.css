@@ -47,10 +47,10 @@
 }
 
 .question-section-right {
-  animation: scale 2s ease-in-out infinite alternate;
+  animation: transform 2s ease-in-out infinite alternate;
 }
 
-@keyframes scale {
+@keyframes transform {
   0% {
     transform: translateY(-30px);
   }

@@ -1,13 +1,12 @@
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import Slider from "react-slick";
+import Carousel from '../Carousel/Carousel';
 
-import client_1 from "../../images/feedback-logo/mobistravel-logo.svg";
-import client_2 from "../../images/feedback-logo/rozatour-logo.svg";
-import client_3 from "../../images/feedback-logo/mira-tur-logo.svg";
-import client_4 from "../../images/feedback-logo/merytour.png";
+import client_1 from '../../images/feedback-logo/mobistravel-logo.svg';
+import client_2 from '../../images/feedback-logo/rozatour-logo.svg';
+import client_3 from '../../images/feedback-logo/mira-tur-logo.svg';
+import client_4 from '../../images/feedback-logo/merytour.png';
 
-const feedback = [
+export default function Feedback() {
+  const feedback = [
   {
     image: client_1,
     description: `1. Каковы были ваши общие впечатления от сотрудничества с нашей веб-студией? - Все чудесно. Быстро, легко.
@@ -48,110 +47,56 @@ const feedback = [
   },
 ];
 
-function SampleNextArrow(props) {
-  const { onClick } = props;
-  return (
-    <button
-      className="slick-arrow next-arrow"
-      onClick={onClick}
-    >
-      <svg viewBox="0 0 24 24" fill="none"><path d="M21 12L16 7M21 12L16 17M21 12H3" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
-    </button>
-  );
-}
-
-function SamplePrevArrow(props) {
-  const { onClick } = props;
-  return (
-    <button
-      className="slick-arrow prev-arrow"
-      onClick={onClick}
-    >
-      <svg viewBox="0 0 24 24" fill="none"><path d="M21 12L16 7M21 12L16 17M21 12H3" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
-    </button>
-  );
-}
-
-SampleNextArrow.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
-
-SamplePrevArrow.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
-
-export default function Feedback() {
-  const settings = {
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-  };
   return (
     <section className="feedback" id="feedback">
       <h2 className="main__title">о нас говорят</h2>
       <div className="feedback-section">
         <div className="container">
-          <Slider {...settings}>
-            {feedback.map(
-              (
-                { image, description, name, date, dateTime, link, website },
-                index,
-              ) => (
-                <div title="нажмите чтобы посмотреть отзыв" key={index}>
-                  <Link
-                    to={link}
-                    className="feedback-link"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span
-                      className="feedback-image"
-                      style={{ backgroundImage: `url(${image})` }}
-                    />
-                    <div className="feedback-info">
-                      <p className="feedback-client">{description}</p>
-                      <span className="feedback-client-contact">
-                        <span className="feedback-client-info">
-                          <h2 className="client-name">{name}</h2>
-                          <p className="feedback-client-website">{website}</p>
-                        </span>
-                        <time dateTime={dateTime} className="feedback-date">
-                          <i>{date}</i>
-                        </time>
-                      </span>
-                    </div>
-                    <svg
-                      className="feedback-corner"
-                      width="22.000000"
-                      height="21.000000"
-                      viewBox="0 0 22 21"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path id="Vector 4" d="M0 0L0 19L20 0L0 0Z" />
-                      <path id="Vector 4" d="M0 19L20 0L0 0L0 19Z" />
-                    </svg>
-                  </Link>
-                </div>
-              ),
+          <Carousel
+            content={feedback}
+            breakpoints={[
+              { maxWidth: 768, visibleCards: 1 },
+              { maxWidth: 1024, visibleCards: 2 },
+              { maxWidth: Infinity, visibleCards: 3 },
+            ]}
+            renderItem={(item) => (
+              <a
+                href={item.link}
+                className="feedback-post"
+                target='_blank'
+                rel="noreferrer"
+                title="нажмите чтобы посмотреть отзыв"
+              >
+                  <div className="feedback-info">
+                  <span
+                    className="feedback-image"
+                    style={{ backgroundImage: `url(${item.image})` }}
+                  />
+                    <p className="feedback-client">{item.description}</p>
+                  </div>
+                  <span className="feedback-client-contact">
+                    <span className="feedback-client-info">
+                      <h2 className="client-name">{item.name}</h2>
+                      <p className="feedback-cite">{item.website}</p>
+                    </span>
+                    <time dateTime={item.dateTime} className="feedback-date">
+                      <i>{item.date}</i>
+                    </time>
+                  </span>
+                <svg
+                  className="feedback-corner"
+                  width="22.000000"
+                  height="21.000000"
+                  viewBox="0 0 22 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path id="Vector 4" d="M0 0L0 19L20 0L0 0Z" />
+                  <path id="Vector 4" d="M0 19L20 0L0 0L0 19Z" />
+                </svg>
+              </a>
             )}
-          </Slider>
+          />
         </div>
       </div>
     </section>

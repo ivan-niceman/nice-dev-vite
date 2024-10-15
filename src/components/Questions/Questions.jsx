@@ -16,13 +16,13 @@ export default function Questions() {
   return (
     <section className="questions container">
       <h2 className="main__title">Часто задаваемые вопросы</h2>
-      <section className="section-questions">
-        <section className="question-section-left">
+      <div className="section-questions">
+        <div className="question-section-left">
           <div>
             <Accordion />
           </div>
-        </section>
-        <section className="question-section-right">
+        </div>
+        <div className="question-section-right">
           <button
             type="button"
             className="question-button"
@@ -32,8 +32,8 @@ export default function Questions() {
             <br />
             посотрудничать?
           </button>
-        </section>
-      </section>
+        </div>
+      </div>
       <Popup isOpen={isPopupOpen} onClose={closePopupForm} />
     </section>
   );

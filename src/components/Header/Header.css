@@ -283,35 +283,42 @@
   border-radius: 10px;
   border: none;
   padding: 10px;
+  font-size: 12px;
   outline: none;
   background-color: var(--body_background-color);
   box-shadow: inset 0 0 10px var(--box-shadow);
   color: var(--text-color);
+  line-height: 1;
   transition: .3s;
 }
 
 ::-webkit-input-placeholder {
   color: var(--placeholder-text-color);
+  font-size: 12px;
   transition: .3s;
 }
 
 ::-moz-placeholder {
   color: var(--placeholder-text-color);
+  font-size: 12px;
   transition: .3s;
 }
 
 :-ms-input-placeholder {
   color: var(--placeholder-text-color);
+  font-size: 12px;
   transition: .3s;
 }
 
 ::-ms-input-placeholder {
   color: var(--placeholder-text-color);
+  font-size: 12px;
   transition: .3s;
 }
 
 ::placeholder {
   color: var(--placeholder-text-color);
+  font-size: 12px;
   transition: .3s;
 }
 

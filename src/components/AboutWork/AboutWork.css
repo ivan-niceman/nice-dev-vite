@@ -4,15 +4,15 @@
 
 @media (max-width: 768px) {
   .about-our-work {
-    padding: 100px 0 0
+    padding: 100px 15px 0
   }
 }
 
-.about-specialty .slick-arrow {
+/* .about-specialty .slick-arrow {
   display: none !important;
-}
+} */
 
-@media(max-width: 600px) {
+/* @media(max-width: 600px) {
   .about-specialty .slick-arrow {
     display: block !important;
     top: 100%;
@@ -29,11 +29,12 @@
   .about-specialty .next-arrow {
     right: 20%;
   }
-}
+} */
 
-.about-specialty .slick-track {
+.about-specialty {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
 }
 
 .about-specialty-title {
@@ -51,7 +52,7 @@
 .about-specialty-paragraph {
   font-size: 18px;
   line-height: 21px;
-  padding: 20px 0 0;
+  margin: 20px 0 0;
   color: var(--text-color);
   transition: .3s;
 }
@@ -63,7 +64,3 @@
   }
 }
 
-.about-specialty-card {
-  border: none;
-  margin: 0 15px;
-}

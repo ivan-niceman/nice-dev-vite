@@ -1,118 +1,44 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { buttonAnimation } from "../../utils/buttonAnimation";
-import ContactsMessage from "../ContactsMessage/ContactsMessage";
-import Preloader from "../Preloader/Preloader";
-
-Popup.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { buttonAnimation } from '../../utils/buttonAnimation';
+import { handleFocus, handleBlur, handleInputChange, handleFormSubmit } from '../../utils/formUtils';
+import ContactsMessage from '../ContactsMessage/ContactsMessage';
+import Preloader from '../Preloader/Preloader';
 
 export default function Popup({ isOpen, onClose }) {
-  const [loading, setLoading] = useState(false);
-
-  const handleEscKey = (event) => {
-    if (isOpen && (event.key === "Escape" || event.key === "Esc")) {
-      onClose();
-    }
-  };
-
-  document.addEventListener("keydown", handleEscKey);
-
-  // send form
-
   const [formData, setFormData] = useState({
-    name: "",
-    tel: "",
-    email: "",
-    message: "",
+    name: '',
+    tel: '',
+    email: '',
+    message: '',
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formErrors, setFormErrors] = useState({});
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const validateForm = () => {
-    let errors = {};
-    if (!formData.name.trim()) {
-      errors.name = "Введите имя";
-    }
-    if (!formData.tel.trim()) {
-      errors.tel = "Введите номер телефона";
-    } else if (!/^\+?[0-9]{10,15}$/.test(formData.tel)) {
-      errors.tel = "Не правильный формат. Пример: 7999999999";
-    } else {
-      formData.tel = formData.tel.replace(/\+/, '');
-    }
-    if (!formData.email.trim()) {
-      errors.email = "Введите электронную почту";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = "Не правильный формат электронной почты";
-    }
-    if (!formData.message.trim()) {
-      errors.message = "Введите текст";
-    }
-    setFormErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-
-    if (validateForm()) {
-      setLoading(true);
-      try {
-        const response = await fetch("./php/form-popup.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams(formData).toString(),
-        });
-        if (response.ok) {
-          setFormSubmitted(true);
-          setTimeout(() => {
-            setFormSubmitted(false);
-            setFormData({
-              name: "",
-              tel: "",
-              email: "",
-              message: "",
-            });
-            onClose();
-          }, 2000);
-        } else {
-          console.error("Ошибка отправки данных");
-        }
-      } catch (error) {
-        console.error("Ошибка:", error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-  };
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    buttonAnimation(".popup__button", ".container-popup-button");
-  }, []);
+    buttonAnimation('.popup__button', '.container-popup-button');
+
+    const handleEscKey = (event) => {
+      if (isOpen && (event.key === 'Escape' || event.key === 'Esc')) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscKey);
+    return () => {
+      document.removeEventListener('keydown', handleEscKey);
+    };
+  }, [isOpen, onClose]);
 
   return (
     <section
-      className={`popup${isOpen ? " popup_opened" : ""}`}
+      className={`popup${isOpen ? ' popup_opened' : ''}`}
       onClick={onClose}
-      >
-      <div 
-        className="popup__container"
-        onClick={e => e.stopPropagation()}
-        >
+    >
+      <div className="popup__container" onClick={(e) => e.stopPropagation()}>
         <button
           aria-label="закрыть"
           type="button"
@@ -132,32 +58,33 @@ export default function Popup({ isOpen, onClose }) {
         </button>
         <h2 className="popup__title">Оставьте заявку</h2>
         <form
-          id="form-popup"
           className="popup__form"
-          onSubmit={handleFormSubmit}
+          onSubmit={(e) => handleFormSubmit(e, formData, "popup", setFormErrors, setFormSubmitted, setLoading, setFormData, onClose)}
           noValidate
         >
           <label className="popup-form-label">
             <input
               type="text"
               name="name"
-              placeholder="Введите ваше имя"
+              autoComplete="on"
+              placeholder="Ваше имя"
               className="popup__input"
-              id="name-image-input"
               value={formData.name}
-              onChange={handleInputChange}
+              onChange={(e) => handleInputChange(e, formData, setFormData)}
             />
             <span className="form-error">{formErrors.name}</span>
           </label>
           <label className="popup-form-label">
             <input
-              type="tel"
+              type="text"
               name="tel"
-              placeholder="Введите номер телефона"
+              autoComplete="on"
+              placeholder="Номер телефона"
               className="popup__input"
-              id="image-link-input"
               value={formData.tel}
-              onChange={handleInputChange}
+              onChange={(e) => handleInputChange(e, formData, setFormData)}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
             />
             <span className="form-error">{formErrors.tel}</span>
           </label>
@@ -165,11 +92,11 @@ export default function Popup({ isOpen, onClose }) {
             <input
               type="email"
               name="email"
-              placeholder="Введите электронную почту"
+              autoComplete="on"
+              placeholder="Электронная почта"
               className="popup__input"
-              id="image-link-input"
               value={formData.email}
-              onChange={handleInputChange}
+              onChange={(e) => handleInputChange(e, formData, setFormData)}
             />
             <span className="form-error">{formErrors.email}</span>
           </label>
@@ -178,8 +105,9 @@ export default function Popup({ isOpen, onClose }) {
               name="message"
               placeholder="Какой у вас вопрос?"
               className="popup__input popup__textarea"
+              autoComplete="on"
               value={formData.message}
-              onChange={handleInputChange}
+              onChange={(e) => handleInputChange(e, formData, setFormData)}
             ></textarea>
             <span className="form-error">{formErrors.message}</span>
           </label>
@@ -203,3 +131,8 @@ export default function Popup({ isOpen, onClose }) {
     </section>
   );
 }
+
+Popup.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+};

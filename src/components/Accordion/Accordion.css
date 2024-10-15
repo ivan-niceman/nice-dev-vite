@@ -83,7 +83,6 @@
 .accordion-collapse {
   max-height: 0;
   transition: max-height .3s ease;
-  max-height: 0;
 }
 
 .accordion-collapse.open {

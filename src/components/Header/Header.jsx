@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { buttonAnimation } from "../../utils/buttonAnimation";
+import { handleFocus, handleBlur, handleInputChange, handleFormSubmit } from "../../utils/formUtils";
 import Navigation from "../Navigation/Navigation";
 import ContactsMessage from "../ContactsMessage/ContactsMessage";
 import Preloader from "../Preloader/Preloader";
@@ -17,73 +18,6 @@ export default function Header() {
   const [formErrors, setFormErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const validateForm = () => {
-    let errors = {};
-    if (!formData.name.trim()) {
-      errors.name = "Введите имя";
-    }
-    if (!formData.tel.trim()) {
-      errors.tel = "Введите номер телефона";
-    } else if (!/^\+?[0-9]{10,15}$/.test(formData.tel)) {
-      errors.tel = "Не правильный формат. Пример: 7999999999";
-    } else {
-      formData.tel = formData.tel.replace(/\+/, '');
-    }
-    if (!formData.email.trim()) {
-      errors.email = "Введите электронную почту";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = "Не правильный формат электронной почты";
-    }
-    if (!formData.message.trim()) {
-      errors.message = "Введите текст";
-    }
-    setFormErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-
-    if (validateForm()) {
-      setLoading(true);
-      try {
-        const response = await fetch("./php/send-form-header.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams(formData).toString(),
-        });
-
-        if (response.ok) {
-          setFormSubmitted(true);
-          setTimeout(() => {
-            setFormSubmitted(false);
-            setFormData({
-              name: "",
-              tel: "",
-              email: "",
-              message: "",
-            });
-          }, 2000);
-        } else {
-          console.error("Ошибка отправки данных");
-        }
-      } catch (error) {
-        console.error("Ошибка:", error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-  };
-
   useEffect(() => {
     buttonAnimation(".form-btn", ".container-button");
   }, []);
@@ -94,7 +28,7 @@ export default function Header() {
       <span className="header__section-yellow" />
       <div className="container">
         <Navigation />
-        <section className="header__titles">
+        <div className="header__titles">
           <h1 className="header__title-left">
             СОБИРАЕМ И ЗАПУСКАЕМ
             <span className="header__title-left-color"> ПРОДАЮЩИЕ </span>
@@ -105,37 +39,40 @@ export default function Header() {
             <span className="header__title-right-color"> успешный </span> и
             узнаваемый бренд
           </h2>
-        </section>
+        </div>
 
-        <section className="header__bottom">
+        <div className="header__bottom">
           <span className="header__image"></span>
-          <section className="header__section-form">
+          <div className="header__section-form">
             <h2 className="header__form-title">бесплатная консультация</h2>
             <form
-              id="form-header"
               className="header__form"
-              onSubmit={handleFormSubmit}
+              onSubmit={(e) => handleFormSubmit(e, formData, "header", setFormErrors, setFormSubmitted, setLoading, setFormData)}
               noValidate
             >
               <label className="popup-form-label">
                 <input
                   type="text"
                   name="name"
+                  autoComplete="on"
                   className="form-contacts"
-                  placeholder="Имя"
+                  placeholder="Ваше имя"
                   value={formData.name}
-                  onChange={handleInputChange}
+                  onChange={(e) => handleInputChange(e, formData, setFormData)}
                 />
                 <span className="form-error">{formErrors.name}</span>
               </label>
               <label className="popup-form-label">
                 <input
-                  type="tel"
+                  type="text"
                   name="tel"
                   className="form-contacts"
-                  placeholder="Телефон"
+                  autoComplete="on"
+                  placeholder="Номер телефона"
                   value={formData.tel}
-                  onChange={handleInputChange}
+                  onChange={(e) => handleInputChange(e, formData, setFormData)}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
                 />
                 <span className="form-error">{formErrors.tel}</span>
               </label>
@@ -144,21 +81,21 @@ export default function Header() {
                   type="email"
                   name="email"
                   className="form-contacts"
-                  placeholder="Эл. почта"
+                  autoComplete="on"
+                  placeholder="Электронная почта"
                   value={formData.email}
-                  onChange={handleInputChange}
+                  onChange={(e) => handleInputChange(e, formData, setFormData)}
                 />
                 <span className="form-error">{formErrors.email}</span>
               </label>
               <label className="popup-form-label">
                 <textarea
                   name="message"
-                  id="message"
                   className="send-text"
-                  placeholder="Ваши пожелания?"
+                  autoComplete="on"
+                  placeholder="Какой у вас вопрос?"
                   value={formData.message}
-                  onChange={handleInputChange}
-                  required
+                  onChange={(e) => handleInputChange(e, formData, setFormData)}
                 ></textarea>
                 <span className="form-error">{formErrors.message}</span>
               </label>
@@ -183,8 +120,8 @@ export default function Header() {
               </div>
             </form>
             <ContactsMessage formSubmitted={formSubmitted} />
-          </section>
-        </section>
+          </div>
+        </div>
       </div>
     </header>
   );

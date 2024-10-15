@@ -50,9 +50,7 @@ const nav = [
   ]
 
 export default function Footer() {
-  function getCurrentYear() {
-    return new Date().getFullYear();
-  }
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="footer">
@@ -77,7 +75,6 @@ export default function Footer() {
             <li key={index}>
             <Link
               to={social.link}
-              className="footer-contacts-link"
               target="_blank"
             >
               {social.icon}
@@ -87,7 +84,7 @@ export default function Footer() {
         </ul>
       </div>
       <HashLink smooth to="/" className="nice-dev">
-        © Nice Dev Web-Studio 2020 - {getCurrentYear()}
+        © Nice Dev Web-Studio 2020 - {currentYear}
       </HashLink>
     </footer>
   );

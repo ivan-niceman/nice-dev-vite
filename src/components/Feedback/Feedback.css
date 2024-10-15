@@ -1,3 +1,7 @@
+.feedback {
+  position: relative;
+}
+
 .feedback .main__title {
   max-width: 1920px;
   padding: 100px 50px 0;
@@ -10,13 +14,13 @@
 }
 
 .feedback-section {
-  padding: 60px 50px 100px;
+  padding: 0 50px;
   background: linear-gradient(151.62deg, rgb(251, 180, 44) 30.896%, rgb(222, 115, 249) 81.545%);
 }
 
 @media(max-width: 768px) {
   .feedback-section {
-    padding: 60px 0px 100px;
+    padding: 0;
   }
 }
 
@@ -25,25 +29,27 @@
   box-shadow: 0 2px 7px var(--black-color);
 }
 
-.feedback-link {
+.feedback-post {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  height: 100%;
   column-gap: 25px;
   padding: 30px 20px;
   position: relative;
   background-color: var(--gray-block);
   border-radius: 10px;
-  margin: 10px 10px 20px;
+  margin: 0 10px;
   transition: .3s;
 }
 
-.feedback-link:hover {
+.feedback-post:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 10px var(--black-color);
 }
 
 @media(max-width: 425px) {
-  .feedback-link {
+  .feedback-post {
     padding: 20px 10px;
   }
 }
@@ -62,19 +68,25 @@
 }
 
 .feedback-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: fit-content;
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  column-gap: 15px;
+  margin: 0 0 10px;
+}
+
+.feedback-corner {
+  position: absolute;
+  bottom: -20px;
+  left: 10%;
+  fill: var(--gray-block);
 }
 
 .feedback-client {
   color: var(--text-color);
   font-size: 14px;
   line-height: 20px;
-  height: 100px;
-  margin: 0 0 10px;
   display: -webkit-box;
+  margin: 0;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -99,17 +111,12 @@
   transition: .3s;
 }
 
-.feedback-client-website {
+.feedback-cite {
   color: var(--text-color);
   font-size: 16px;
   font-weight: 400;
-  line-height: 21px;
   margin: 0;
   transition: .3s;
-}
-
-.feedback-client-website:hover {
-  color: var(--text-color);
 }
 
 .feedback-date {
@@ -117,25 +124,29 @@
   transition: .3s;
 }
 
-.feedback-corner {
-  position: absolute;
-  bottom: -20px;
-  left: 10%;
-  fill: var(--gray-block);
+.feedback .carousel__list {
+  padding: 60px 0 100px;
 }
 
-.feedback-section .slick-arrow {
+.feedback .carousel-btn {
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+  fill: var(--gray-block);
   border: 2px solid var(--white-color);
   background-color: transparent;
-  bottom: -70px;
-  right: 15px;
 }
 
-.feedback-section .slick-arrow path {
+@media(max-width: 768px) {
+  .feedback .carousel-btn {
+    right: 10px;
+  }
+}
+
+.feedback .carousel-btn path {
   stroke: var(--white-color);
 }
 
-.feedback-section .prev-arrow {
-  right: 90px;
+.feedback .prev-btn {
+  transform: translateX(-150%);
 }
-

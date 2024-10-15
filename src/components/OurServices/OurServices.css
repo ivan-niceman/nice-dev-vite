@@ -4,14 +4,14 @@
 
 @media (max-width: 768px) {
   .our-services {
-    padding: 135px 20px 0
+    padding: 100px 20px 0
   }
 }
 
 .services-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 426px));
-  grid-gap: 30px;
+  gap: 50px 30px;
   justify-content: space-around;
   margin: 65px 0 0;
 }

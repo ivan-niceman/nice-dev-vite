@@ -1,7 +1,7 @@
 export default function Telegram() {
   return (
     <svg
-    className="social-icon telegram-icon"
+      className="social-icon telegram-icon"
       version="1.1"
       id="Layer_1"
       x="0px"

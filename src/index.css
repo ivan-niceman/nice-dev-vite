@@ -16,6 +16,7 @@
 @import url(./components/ScrollUp/ScrollUp.css);
 @import url(./components/ToggleTheme/ToggleTheme.css);
 @import url(./components/Preloader/Preloader.css);
+@import url(./components/Carousel/Carousel.css);
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600&display=swap");
@@ -44,7 +45,7 @@
   --gray-block: #606368;
   --mobile-menu: #495057;
   --box-shadow: #000;
-  --placeholder-text-color: #f5f5f5;
+  --placeholder-text-color: #939496;
   --purple-to-yellow-color: #fbb42c;
 }
 
@@ -83,6 +84,18 @@ body {
 
 .page-hidden {
   overflow: hidden;
+}
+
+section {
+  position: relative;
+  opacity: 0;
+  top: 70px;
+  transition: all 0.5s ease-out;
+}
+
+section.visible {
+  opacity: 1;
+  top: 0;
 }
 
 .container {
@@ -212,6 +225,16 @@ body {
   }
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
 .feedback__form {
   display: block;
   background: #00000080;
@@ -263,103 +286,8 @@ body {
   }
 }
 
-/* Slider */
-.slick-slider {
-  position: relative;
-  display: block;
-  box-sizing: border-box;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-  -khtml-user-select: none;
-  -ms-touch-action: pan-y;
-  touch-action: pan-y;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.slick-list {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-.slick-list:focus {
-  outline: none;
-}
-
-.slick-list.dragging {
-  cursor: pointer;
-  cursor: hand;
-}
-
-.slick-slider .slick-track,
-.slick-slider .slick-list {
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-.slick-track {
-  position: relative;
-  top: 0;
-  left: 0;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.slick-track:after {
-  clear: both;
-}
-
-.slick-loading .slick-track {
-  visibility: hidden;
-}
-
-.slick-slide {
-  display: none;
-  float: left;
-  height: 100%;
-  min-height: 1px;
-}
-
-[dir='rtl'] .slick-slide {
-  float: right;
-}
-
-.slick-slide img {
-  display: block;
-}
-
-.slick-slide.slick-loading img {
-  display: none;
-}
-
-.slick-slide.dragging img {
-  pointer-events: none;
-}
-
-.slick-initialized .slick-slide {
-  display: block;
-}
-
-.slick-loading .slick-slide {
-  visibility: hidden;
-}
-
-.slick-vertical .slick-slide {
-  display: block;
-  height: auto;
-  border: 1px solid transparent;
-}
-
-.slick-arrow {
+/* carousel */
+.carousel-btn {
   position: absolute;
   width: 50px;
   height: 50px;
@@ -370,26 +298,42 @@ body {
   z-index: 1;
 }
 
-.slick-arrow:hover {
+.carousel-btn:hover {
   border: 2px solid var(--yellow-color);
 }
 
-.slick-arrow:hover path {
+.carousel-btn:hover path {
   stroke: var(--yellow-color);
 }
 
-.prev-arrow svg {
+.prev-btn svg {
   transform: rotate(180deg);
 }
 
 /* social-icons */
+.telegram-icon {
+  --animation-delay: 1s;
+}
+.whatsapp-icon {
+  --animation-delay: 1.5s;
+}
+.mail-icon {
+  --animation-delay: 2s;
+}
+.vkontakte-icon {
+  --animation-delay: 2.5s;
+}
+
 .social-icon {
   display: block;
   width: 30px;
   height: 25px;
+  animation: scale 1s;
+  animation-delay: var(--animation-delay);
 }
 
-.social-icon:hover path,
-.social-icon:hover polyline {
-  stroke: var(--yellow-color);
+@keyframes scale {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.2);}
+  100% {transform: scale(1);}
 }

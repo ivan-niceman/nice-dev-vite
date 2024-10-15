@@ -119,6 +119,18 @@
   stroke: var(--text-color);
 }
 
+.contacts-link svg path,
+.contacts-link svg polyline,
+.contacts-link-yellow svg path,
+.contacts-link-yellow svg polyline {
+  animation: scale-stroke 1s;
+  animation-delay: var(--animation-delay);
+}
+
+@keyframes scale-stroke {
+  50% {stroke: var(--purple-color);}
+}
+
 .contacts-link svg:hover path,
 .contacts-link svg:hover polyline {
   stroke: var(--purple-color);
