@@ -1,0 +1,132 @@
+.templates-examples {
+  padding: 100px 50px 0;
+}
+
+.templates-examples__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 50px;
+}
+
+@media(max-width: 768px) {
+  .templates-examples {
+    padding: 100px 15px 0;
+  }
+
+  .templates-examples__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.templates-examples__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.templates-examples__name {
+  color: var(--text-color);
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 30px;
+}
+
+.templates-examples__name span {
+  color: var(--yellow-color);
+}
+
+.templates-examples__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.templates-examples__img-desktop,
+.templates-examples__img-mobile {
+  height: 350px;
+  border: 7px solid #000;
+  background-color: var(--body_background-color);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.templates-examples__img-desktop {
+  width: 90%;
+}
+
+.templates-examples__img-mobile {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+}
+
+@media(max-width: 600px) {
+  .templates-examples__card-img {
+    position: relative;
+    height: 260px;
+  }
+
+  .templates-examples__img-desktop {
+    width: 100%;
+    height: 210px;
+    border: 4px solid #000;
+  }
+
+  .templates-examples__img-mobile {
+    max-width: 90px;
+    height: 170px;
+    border: 4px solid #000;
+  }
+}
+
+.templates-examples__img {
+  width: 100%;
+  animation: transformShow 50s 1s infinite linear;
+}
+
+@keyframes transformShow {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(calc(-100% + 350px));
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.templates-examples__card-img:hover .templates-examples__img {
+  animation-play-state: paused;
+}
+
+.templates-examples__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.templates-examples__description {
+  color: var(--text-color);
+  font-size: 18px;
+  margin: 20px 0 50px;
+  max-width: 60%;
+}
+
+@media(max-width: 600px) {
+  .templates-examples__description {
+    max-width: 100%;
+    font-size: 16px;
+    margin: 20px 0;
+  }
+}
+
+.templates-examples__link {
+  color: var(--purple-to-yellow-color);
+  font-size: 18px;
+  font-weight: 700;
+}

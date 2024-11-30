@@ -1,0 +1,56 @@
+.templates-form {
+  margin-top: 100px;
+  background-color: var(--yellow-color);
+  padding: 50px;
+}
+
+@media(max-width: 768px) {
+  .templates-form {
+    padding: 50px 15px;
+  }
+}
+
+.templates-form__title {
+  font-family: 'Montserrat Alternates', 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 37px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.templates-form .form {
+  max-width: 625px;
+  min-height: 360px;
+  border: 3px solid var(--white-color);
+  border-radius: 20px;
+  padding: 40px 45px;
+  margin: 25px auto 40px;
+  transition: .3s;
+}
+
+.templates-form .form-contacts,
+.templates-form .send-text {
+  border-radius: 10px;
+}
+
+.templates-form .form-submit {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+@media (max-width:425px) {
+  .templates-form .form-submit {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+.templates-form .form-paragraph {
+  color: var(--white-color);
+  margin: 0;
+  font-size: 14px;
+  transition: .3s;
+}

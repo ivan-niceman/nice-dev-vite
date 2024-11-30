@@ -1,0 +1,41 @@
+.question-button {
+  position: relative;
+  overflow: hidden;
+  width: 350px;
+  width: calc(250px + (350 - 250) * (100vw - 320px) / (1440 - 320));
+  height: 350px;
+  height: calc(250px + (350 - 250) * (100vw - 320px) / (1440 - 320));
+  border-radius: 50%;
+  background: var(--purple-to-yellow-color);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  text-decoration-line: underline;
+  color: var(--white-to-black-color);
+  text-decoration: none;
+  border: none;
+  transition: 0.3s;
+}
+
+.question-button:hover {
+  opacity: 0.8;
+}
+
+.question-button:focus {
+  outline: none;
+}
+
+.question-button {
+  animation: transform 2s ease-in-out infinite alternate;
+}
+
+@keyframes transform {
+  0% {
+    transform: translateY(-30px);
+  }
+
+  100% {
+    transform: translateY(30px);
+  }
+}

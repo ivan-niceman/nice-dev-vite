@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 export default function ScrollUp() {
@@ -27,7 +26,11 @@ export default function ScrollUp() {
   };
 
   return (
-    <button id="scrollUpButton" className={`scroll-up${isVisible ? ' scroll-up_visible' : ''}`} onClick={scrollToTop}>
+    <button
+      id="scrollUpButton"
+      className={`scroll-up${isVisible ? ' scroll-up_visible' : ''}`}
+      onClick={scrollToTop}
+    >
       <span />
       <span />
     </button>

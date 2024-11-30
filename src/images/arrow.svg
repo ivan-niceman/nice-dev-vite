@@ -1,0 +1,12 @@
+<svg width="404.016113" height="53.289062" viewBox="0 0 404.016 53.2891" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<linearGradient x1="128.000000" y1="28.244141" x2="316.000000" y2="35.177734" id="paint_linear_8_645_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#FBB42C"/>
+			<stop offset="1.000000" stop-color="#DE73F9"/>
+		</linearGradient>
+	</defs>
+	<path id="Стрелка 1" d="M390.34 22.64L374.54 6.84C372.96 5.26 372.96 2.77 374.54 1.18C376.12 -0.4 378.61 -0.4 380.2 1.18L402.82 23.81C404.41 25.4 404.41 27.88 402.82 29.47L380.2 52.1C378.61 53.68 376.12 53.68 374.54 52.1C372.96 50.51 372.96 48.02 374.54 46.44L390.34 30.64L0 30.64L0 22.64L390.34 22.64Z" fill="url(#paint_linear_8_645_0)" fill-opacity="1.000000" fill-rule="evenodd"/>
+</svg>

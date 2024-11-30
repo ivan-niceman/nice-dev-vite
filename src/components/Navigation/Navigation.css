@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: center;
   column-gap: 20px;
+  padding-bottom: 30px;
 }
 
 @media (max-width: 991px) {
@@ -128,7 +129,9 @@
 }
 
 @keyframes scale-stroke {
-  50% {stroke: var(--purple-color);}
+  50% {
+    stroke: var(--purple-color);
+  }
 }
 
 .contacts-link svg:hover path,
@@ -158,6 +161,8 @@
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
   }
 }
 

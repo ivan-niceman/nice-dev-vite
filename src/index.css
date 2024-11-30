@@ -4,6 +4,7 @@
 @import url(./components/Accordion/Accordion.css);
 @import url(./components/ContactsMessage/ContactsMessage.css);
 @import url(./components/Feedback/Feedback.css);
+@import url(./components/Form/Form.css);
 @import url(./components/Footer/Footer.css);
 @import url(./components/Header/Header.css);
 @import url(./components/Navigation/Navigation.css);
@@ -17,6 +18,12 @@
 @import url(./components/ToggleTheme/ToggleTheme.css);
 @import url(./components/Preloader/Preloader.css);
 @import url(./components/Carousel/Carousel.css);
+@import url(./components/TemplatesInfo/TemplatesInfo.css);
+@import url(./components/FormButton/FormButton.css);
+@import url(./components/TemplatesExample/TemplatesExample.css);
+@import url(./components/WhyWe/WhyWe.css);
+@import url(./components/Rules/Rules.css);
+@import url(./components/TemplatesForm/TemplatesForm.css);
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600&display=swap");
@@ -24,6 +31,7 @@
 :root {
   --white-text-color: #fff;
   --white-color: #fff;
+  --white-to-black-color: #fff;
   --black-color: #000;
   --text-color: #000;
   --yellow-color: #fbb42c;
@@ -33,7 +41,7 @@
   --block_background-color: #fff;
   --gray-block: #f5f5f5;
   --mobile-menu: #f5f5f5;
-  --box-shadow: #fff;
+  --box-shadow: transparent;
   --placeholder-text-color: #c2abab;
 }
 
@@ -45,6 +53,7 @@
   --gray-block: #606368;
   --mobile-menu: #495057;
   --box-shadow: #000;
+  --white-to-black-color: #000;
   --placeholder-text-color: #939496;
   --purple-to-yellow-color: #fbb42c;
 }
@@ -52,6 +61,7 @@
 a:hover {
   text-decoration: none;
 }
+
 a:focus-visible {
   outline: none;
 }
@@ -111,19 +121,16 @@ section.visible {
 
 .privacy:hover {
   text-decoration: none;
-  color: var(--text-color);
-  border-bottom: 1px solid var(--text-color);
+  border-bottom: 1px solid transparent;
 }
 
-.privacy-popup {
+.popup .privacy {
   border-bottom: 1px solid var(--text-color);
   color: var(--text-color);
-  transition: .3s;
 }
 
-.privacy-popup:hover {
-  text-decoration: none;
-  color: var(--text-color);
+.popup .privacy:hover {
+  border-bottom: 1px solid transparent;
 }
 
 .line {
@@ -135,12 +142,13 @@ section.visible {
 }
 
 .main__title {
-  font-family: "Montserrat Alternates";
+  font-family: "Montserrat Alternates", "Roboto", sans-serif;
   font-size: 46px;
+  font-weight: 400;
   text-transform: uppercase;
   margin: 0 auto 50px;
   color: var(--text-color);
-  text-shadow: 2px 5px 5px var(--box-shadow);
+  text-shadow: 2px 3px 3px var(--box-shadow);
   transition: .3s;
 }
 
@@ -154,6 +162,7 @@ section.visible {
     opacity: 0;
     transform: translateY(10px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -162,7 +171,7 @@ section.visible {
 
 @media (max-width: 768px) {
   .main__title {
-    font-size: 34px;
+    font-size: 30px;
     text-align: center;
     margin: 0 0 30px
   }
@@ -232,7 +241,13 @@ input::-webkit-inner-spin-button {
 }
 
 input[type=number] {
-  -moz-appearance:textfield;
+  -moz-appearance: textfield;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: transparent;
+  transition: 0s;
 }
 
 .feedback__form {
@@ -314,12 +329,15 @@ input[type=number] {
 .telegram-icon {
   --animation-delay: 1s;
 }
+
 .whatsapp-icon {
   --animation-delay: 1.5s;
 }
+
 .mail-icon {
   --animation-delay: 2s;
 }
+
 .vkontakte-icon {
   --animation-delay: 2.5s;
 }
@@ -333,7 +351,15 @@ input[type=number] {
 }
 
 @keyframes scale {
-  0% {transform: scale(1);}
-  50% {transform: scale(1.2);}
-  100% {transform: scale(1);}
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

@@ -8,29 +8,6 @@
   }
 }
 
-/* .about-specialty .slick-arrow {
-  display: none !important;
-} */
-
-/* @media(max-width: 600px) {
-  .about-specialty .slick-arrow {
-    display: block !important;
-    top: 100%;
-    border: 2px solid var(--text-color);
-  }
-
-  .about-specialty .slick-arrow path {
-    stroke: var(--text-color);
-  }
-
-  .about-specialty .prev-arrow {
-    left: 20%;
-  }
-  .about-specialty .next-arrow {
-    right: 20%;
-  }
-} */
-
 .about-specialty {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -63,4 +40,3 @@
     line-height: normal
   }
 }
-

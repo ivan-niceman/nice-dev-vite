@@ -22,16 +22,14 @@ export default function AboutWork() {
     <section className="about-our-work container">
       <h2 className="main__title">как мы работаем?</h2>
       <div className="about-specialty">
-        {
-          aboutOurWorkContent.map((item, index) => (
-            <div key={index}>
-              <div>
-                <h2 className="about-specialty-title">{item.title}</h2>
-                <p className="about-specialty-paragraph">{item.description}</p>
-              </div>
+        {aboutOurWorkContent.map((item, index) => (
+          <div key={index}>
+            <div>
+              <h2 className="about-specialty-title">{item.title}</h2>
+              <p className="about-specialty-paragraph">{item.description}</p>
             </div>
-          )
-        )}
+          </div>
+        ))}
       </div>
     </section>
   );

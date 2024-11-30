@@ -5,8 +5,8 @@ const validateForm = (formData) => {
   }
   if (!formData.tel.trim()) {
     errors.tel = 'Введите номер телефона';
-  } else if (!/^7\(\d{3}\)\d{3}-\d{2}-\d{2}$/.test(formData.tel)) {
-    errors.tel = 'Пример: 7(777)777-77-77';
+  } else if (!/^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/.test(formData.tel)) {
+    errors.tel = 'Пример: +7(777)777-77-77';
   }
   if (!formData.email.trim()) {
     errors.email = 'Введите электронную почту';
@@ -43,15 +43,16 @@ const submitForm = async (
 
       if (response.ok) {
         setFormSubmitted(true);
+        setFormData({
+          name: '',
+          tel: '',
+          email: '',
+          message: '',
+        });
+
         setTimeout(() => {
           setFormSubmitted(false);
-          setFormData({
-            name: '',
-            tel: '',
-            email: '',
-            message: '',
-          });
-          if (onClose) onClose();
+          onClose();
         }, 2000);
       } else {
         console.error('Ошибка отправки данных');
@@ -67,8 +68,13 @@ const submitForm = async (
 };
 
 const formatPhoneNumber = (value) => {
-  let cleaned = value.replace(/\D/g, '');
+  let cleaned = value.replace(/[^\d+]/g, '');
   let formattedNumber = '';
+
+  if (cleaned.startsWith('+')) {
+    formattedNumber += `${cleaned[0]}`;
+    cleaned = cleaned.slice(1);
+  }
 
   if (cleaned.length > 0) {
     formattedNumber += `${cleaned[0]}`;
@@ -91,13 +97,13 @@ const formatPhoneNumber = (value) => {
 export const handleFocus = (e) => {
   const inputElement = e.target;
   if (inputElement.value === '') {
-    inputElement.value = '7';
+    inputElement.value = '+7';
   }
 };
 
 export const handleBlur = (e) => {
   const inputElement = e.target;
-  if (inputElement.value === '7') {
+  if (inputElement.value === '+7') {
     inputElement.value = '';
   }
 };

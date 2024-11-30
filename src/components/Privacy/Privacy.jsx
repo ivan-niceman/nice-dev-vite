@@ -1,10 +1,7 @@
-import Navigation from "../Navigation/Navigation";
-
 export default function Privacy() {
   return (
     <>
       <main className="main main__privacy">
-        <Navigation />
         <h1 className="privacy__title">
           Политика в отношении обработки персональных данных
         </h1>

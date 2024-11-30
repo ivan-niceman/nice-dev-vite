@@ -17,6 +17,10 @@ export default function OurServices() {
       title_1: `разработка telegram`,
       title_2: `ботов`,
     },
+    {
+      title_1: `сайт-шаблон`,
+      title_2: `за 3 дня`,
+    },
   ];
   return (
     <section className="our-services container" id="services">

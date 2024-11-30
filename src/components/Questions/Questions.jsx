@@ -1,18 +1,7 @@
-import { useState } from "react";
-import Popup from "../Popup/Popup";
-import Accordion from "../Accordion/Accordion";
+import Accordion from '../Accordion/Accordion';
+import FormButton from '../FormButton/FormButton';
 
 export default function Questions() {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-  const openPopupForm = () => {
-    setIsPopupOpen(true);
-  };
-
-  const closePopupForm = () => {
-    setIsPopupOpen(false);
-  };
-
   return (
     <section className="questions container">
       <h2 className="main__title">Часто задаваемые вопросы</h2>
@@ -22,19 +11,8 @@ export default function Questions() {
             <Accordion />
           </div>
         </div>
-        <div className="question-section-right">
-          <button
-            type="button"
-            className="question-button"
-            onClick={openPopupForm}
-          >
-            Хотите
-            <br />
-            посотрудничать?
-          </button>
-        </div>
+        <FormButton />
       </div>
-      <Popup isOpen={isPopupOpen} onClose={closePopupForm} />
     </section>
   );
 }

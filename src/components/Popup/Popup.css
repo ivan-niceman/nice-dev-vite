@@ -16,7 +16,7 @@
   right: 0;
   visibility: hidden;
   opacity: 0;
-  z-index: 10;
+  z-index: 100;
   -webkit-transition: visibility 0.3s, opacity 0.3s linear;
   -o-transition: visibility 0.3s, opacity 0.3s linear;
   transition: visibility 0.3s, opacity 0.3s linear;
@@ -30,15 +30,13 @@
 }
 
 .popup__container {
-  position: relative;
   width: 100%;
   min-width: 300px;
   max-width: 700px;
-  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   background-color: var(--gray-block);
-  padding: 33px 36px 37px;
+  padding: 30px 35px;
   margin: 0 19px;
   cursor: default;
   transform: scale(0.7);
@@ -93,18 +91,18 @@
   }
 }
 
-.popup__form-paragraph {
-  margin: 0;
-  font-size: 14px;
-  font-size: calc(12px + (14 - 12) * (100vw - 768px) / (1920 - 768));
+.popup .form-paragraph {
+  margin: 5px 0 0;
+  font-size: 12px;
   color: var(--text-color);
   transition: .3s;
 }
 
 
-.popup__input {
-  border: none;
+.popup .form-contacts,
+.popup .send-text {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0;
   width: 100%;
   font-size: 14px;
   line-height: 17px;
@@ -115,41 +113,46 @@
   transition: .3s;
 }
 
-.popup__input:focus {
+.popup .form-contacts:focus {
   outline: none;
 }
 
-.popup__input::-webkit-input-placeholder {
+.popup .form-contacts::-webkit-input-placeholder {
   color: var(--placeholder-text-color);
   transition: .3s;
 }
 
-.popup__input::-moz-placeholder {
+.popup .form-contacts::-moz-placeholder {
   color: var(--placeholder-text-color);
   transition: .3s;
 }
 
-.popup__input::-ms-input-placeholder {
+.popup .form-contacts::-ms-input-placeholder {
   color: var(--placeholder-text-color);
   transition: .3s;
 }
 
-.popup__input:-ms-input-placeholder {
+.popup .form-contacts:-ms-input-placeholder {
   color: var(--placeholder-text-color);
   transition: .3s;
 }
 
-.popup__input::placeholder {
+.popup .form-contacts::placeholder {
   color: var(--placeholder-text-color);
   transition: .3s;
 }
 
-.popup__textarea {
+.popup .send-text {
   resize: none;
   height: 150px;
 }
 
-.popup__button {
+.popup input:focus::placeholder {
+  color: transparent;
+  transition: 0s;
+}
+
+.popup .form-btn {
   position: relative;
   color: var(--white-text-color);
   width: 100%;
@@ -165,27 +168,14 @@
   transition: 0.3s;
 }
 
-.popup__button:hover {
+.popup .form-btn:hover {
   opacity: 0.8;
 }
 
 @media (max-width: 320px) {
-  .popup__button {
+  .popup .form-btn {
     min-height: 47px;
     font-size: 14px;
     line-height: 17px;
   }
-}
-
-.popup-form-label {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-error {
-  display: block;
-  color: #ff4747;
-  height: 20px;
-  font-size: 14px;
 }

@@ -4,7 +4,7 @@
 
 @media (max-width: 768px) {
   .our-price {
-    padding: 100px 20px 0
+    padding: 100px 15px 0;
   }
 }
 
@@ -50,7 +50,8 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: var(--box-shadow);
+  color: var(--white-to-black-color);
+  box-shadow: inset 0 0 5px 2px var(--box-shadow);
   padding: 0 15px;
   margin: 0;
   transition: .3s;
